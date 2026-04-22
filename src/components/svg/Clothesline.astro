@@ -1,8 +1,4 @@
 ---
-/**
- * Inline SVG clothesline with baby clothes — inspired by the reference image.
- * Onesie, hat, socks, and eucalyptus sprigs on a rope with wooden pegs.
- */
 ---
 
 <svg
@@ -13,7 +9,6 @@
   aria-hidden="true"
   role="img"
 >
-  <!-- Rope -->
   <path
     d="M30 30 Q100 50 200 38 Q300 26 370 42"
     stroke="var(--outline-variant)"
@@ -22,7 +17,7 @@
     fill="none"
   />
 
-  <!-- Eucalyptus left -->
+
   <g transform="translate(55, 28) rotate(-15)" class="sway-element" style="animation-delay: 0.2s;">
     <path d="M0 0 Q-4 12 -2 28" stroke="var(--primary-container)" stroke-width="1.5" fill="none" />
     <ellipse cx="-6" cy="8" rx="5" ry="3.5" fill="var(--primary-container)" opacity="0.7" transform="rotate(-30)" />
@@ -32,12 +27,10 @@
     <ellipse cx="3" cy="19" rx="4.5" ry="3" fill="var(--primary-container)" opacity="0.55" transform="rotate(15)" />
   </g>
 
-  <!-- Peg 1 -->
   <g transform="translate(100, 36)">
     <rect x="-3" y="-6" width="6" height="14" rx="1.5" fill="var(--outline)" opacity="0.5" />
   </g>
 
-  <!-- Baby onesie -->
   <g transform="translate(100, 44)" class="sway-element" style="animation-delay: 0s;">
     <path
       d="M-20 0 L-28 -4 L-24 14 L-16 10 L-16 40 Q-16 46 -10 46 L10 46 Q16 46 16 40 L16 10 L24 14 L28 -4 L20 0 Q14 -8 0 -8 Q-14 -8 -20 0Z"
@@ -45,7 +38,6 @@
       stroke="var(--outline-variant)"
       stroke-width="1"
     />
-    <!-- Star pattern on onesie -->
     <circle cx="-4" cy="18" r="1.5" fill="var(--outline-variant)" opacity="0.4" />
     <circle cx="6" cy="14" r="1.5" fill="var(--outline-variant)" opacity="0.4" />
     <circle cx="0" cy="28" r="1.5" fill="var(--outline-variant)" opacity="0.4" />
@@ -55,12 +47,10 @@
     <circle cx="6" cy="36" r="1.2" fill="var(--outline-variant)" opacity="0.3" />
   </g>
 
-  <!-- Peg 2 -->
   <g transform="translate(185, 34)">
     <rect x="-3" y="-6" width="6" height="14" rx="1.5" fill="var(--outline)" opacity="0.5" />
   </g>
 
-  <!-- Baby hat -->
   <g transform="translate(185, 42)" class="sway-element" style="animation-delay: 0.4s;">
     <path
       d="M-18 16 Q-18 -2 0 -6 Q18 -2 18 16"
@@ -74,11 +64,9 @@
       stroke="var(--tertiary-fixed-dim)"
       stroke-width="1"
     />
-    <!-- Little bow -->
     <circle cx="0" cy="-6" r="3" fill="var(--tertiary-container)" />
   </g>
 
-  <!-- Eucalyptus middle -->
   <g transform="translate(230, 30) rotate(10)" class="sway-element" style="animation-delay: 0.6s;">
     <path d="M0 0 Q3 14 1 30" stroke="var(--primary-container)" stroke-width="1.5" fill="none" />
     <ellipse cx="-5" cy="10" rx="5" ry="3" fill="var(--primary-container)" opacity="0.65" transform="rotate(-25)" />
@@ -87,33 +75,27 @@
     <ellipse cx="4" cy="24" rx="4" ry="2.5" fill="var(--primary-container)" opacity="0.45" transform="rotate(10)" />
   </g>
 
-  <!-- Peg 3 -->
   <g transform="translate(290, 32)">
     <rect x="-3" y="-6" width="6" height="14" rx="1.5" fill="var(--outline)" opacity="0.5" />
   </g>
 
-  <!-- Baby socks pair -->
   <g transform="translate(280, 40)" class="sway-element" style="animation-delay: 0.3s;">
-    <!-- Sock left -->
     <path
       d="M-8 0 L-8 20 Q-8 28 -14 28 Q-18 28 -18 24 L-18 18 Q-18 16 -8 16"
       fill="var(--secondary-container)"
       stroke="var(--secondary-fixed-dim)"
       stroke-width="1"
     />
-    <!-- Sock right -->
     <path
       d="M8 0 L8 20 Q8 28 14 28 Q18 28 18 24 L18 18 Q18 16 8 16"
       fill="var(--secondary-container)"
       stroke="var(--secondary-fixed-dim)"
       stroke-width="1"
     />
-    <!-- Cuff details -->
     <line x1="-12" y1="4" x2="-4" y2="4" stroke="var(--secondary-fixed-dim)" stroke-width="0.8" opacity="0.5" />
     <line x1="4" y1="4" x2="12" y2="4" stroke="var(--secondary-fixed-dim)" stroke-width="0.8" opacity="0.5" />
   </g>
 
-  <!-- Eucalyptus right -->
   <g transform="translate(340, 34) rotate(-5)" class="sway-element" style="animation-delay: 0.8s;">
     <path d="M0 0 Q-2 10 0 22" stroke="var(--primary-container)" stroke-width="1.5" fill="none" />
     <ellipse cx="-5" cy="7" rx="4.5" ry="3" fill="var(--primary-container)" opacity="0.6" transform="rotate(-20)" />

@@ -8,25 +8,23 @@ interface Props {
 }
 
 const {
-  title = `${event.parentName}'s ${event.eventType} — ${event.tagline}`,
-  description = `Join ${event.hostName} to celebrate ${event.parentName}'s ${event.eventType.toLowerCase()}. ${event.dayOfWeek}, ${event.date} at ${event.venue}.`,
+  title = `${event.eventType} de ${event.parentName} — ${event.tagline}`,
+  description = `Acompáñanos a celebrar el ${event.eventType.toLowerCase()} de ${event.parentName}. ${event.dayOfWeek}, ${event.date} en ${event.venue}.`,
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
 
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-image.png" />
 
-    <!-- Preload fonts -->
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -43,7 +41,6 @@ const {
     <slot />
 
     <script>
-      // Scroll-triggered animations
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

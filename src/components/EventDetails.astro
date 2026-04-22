@@ -14,25 +14,21 @@ const year = dateObj.getUTCFullYear();
   </div>
 
   <div class="details__grid animate-on-scroll delay-1">
-    <!-- Date -->
     <div class="details__block">
       <span class="details__label text-label">{event.dayOfWeek}</span>
       <span class="details__day">{dayNumber}</span>
       <span class="details__sub">{monthName} {year}</span>
     </div>
 
-    <!-- Divider -->
     <div class="details__vdivider" aria-hidden="true"></div>
 
-    <!-- Time -->
     <div class="details__block">
-      <span class="details__label text-label">Time</span>
+      <span class="details__label text-label">Hora</span>
       <span class="details__time">{event.startTime}</span>
-      {event.endTime && <span class="details__sub">to {event.endTime}</span>}
+      {event.endTime && <span class="details__sub">a {event.endTime}</span>}
     </div>
   </div>
 
-  <!-- Location -->
   <div class="details__location animate-on-scroll delay-2">
     <div class="details__location-icon">
       <svg

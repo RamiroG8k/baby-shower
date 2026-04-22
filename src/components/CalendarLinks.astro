@@ -4,7 +4,7 @@ import event from '../data/event.json';
 // Build calendar URLs from event data
 const title = encodeURIComponent(`${event.parentName}'s ${event.eventType}`);
 const location = encodeURIComponent(`${event.venue}, ${event.address}`);
-const description = encodeURIComponent(`${event.tagline} Hosted by ${event.hostName}.`);
+const description = encodeURIComponent(`${event.tagline} Organizado por ${event.hostName}.`);
 
 // Parse times for calendar format (YYYYMMDDTHHMMSS)
 const dateStr = event.date.replace(/-/g, '');
@@ -30,7 +30,7 @@ DTSTART:${startCal}
 DTEND:${endCal}
 SUMMARY:${event.parentName}'s ${event.eventType}
 LOCATION:${event.venue}, ${event.address}
-DESCRIPTION:${event.tagline} Hosted by ${event.hostName}.
+DESCRIPTION:${event.tagline} Organizado por ${event.hostName}.
 END:VEVENT
 END:VCALENDAR`;
 
@@ -38,7 +38,7 @@ const icsDataUri = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsCon
 ---
 
 <section class="calendar section animate-on-scroll" id="calendar">
-  <p class="calendar__label text-label">Save the Date</p>
+  <p class="calendar__label text-label">Reserva la Fecha</p>
 
   <div class="calendar__links">
     <a

@@ -9,10 +9,9 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
 ---
 
 <section class="rsvp section animate-on-scroll" id="rsvp">
-  <h2 class="rsvp__title text-headline-md">Will you join us?</h2>
+  <h2 class="rsvp__title text-headline-md">¿Nos acompañarás?</h2>
 
   <div class="rsvp__card card" id="rsvp-card">
-    <!-- Step 1: Accept / Decline -->
     <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
       <div class="rsvp__buttons">
         <button
@@ -20,36 +19,35 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
           data-response="accept"
           type="button"
         >
-          Joyfully Accept
+          Asistiré con gusto
         </button>
         <button
           class="pill-button pill-button--outline rsvp__choice"
           data-response="decline"
           type="button"
         >
-          Regretfully Decline
+          No podré asistir
         </button>
       </div>
     </div>
 
-    <!-- Step 2: Form fields (revealed on choice) -->
     <form class="rsvp__step rsvp__form" id="rsvp-form" style="display:none;">
       <input type="hidden" name="response" id="rsvp-response" value="" />
 
       <div class="rsvp__field">
-        <label for="rsvp-name" class="text-label">Your Name</label>
+        <label for="rsvp-name" class="text-label">Tu Nombre</label>
         <input
           type="text"
           id="rsvp-name"
           name="name"
           class="pill-input"
-          placeholder="Enter your name"
+          placeholder="Escribe tu nombre"
           required
         />
       </div>
 
       <div class="rsvp__field" id="rsvp-guests-field">
-        <label for="rsvp-guests" class="text-label">Number of Guests</label>
+        <label for="rsvp-guests" class="text-label">Número de Invitados</label>
         <div class="rsvp__stepper">
           <button
             type="button"
@@ -94,14 +92,14 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
 
       <div class="rsvp__field" id="rsvp-dietary-field">
         <label for="rsvp-dietary" class="text-label"
-          >Dietary Restrictions <span class="rsvp__optional">(optional)</span
+          >Restricciones Alimenticias <span class="rsvp__optional">(opcional)</span
           ></label
         >
         <textarea
           id="rsvp-dietary"
           name="dietary"
           class="pill-input"
-          placeholder="Any allergies or preferences?"
+          placeholder="¿Alguna alergia o preferencia?"
           rows="2"></textarea>
       </div>
 
@@ -109,15 +107,14 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
         type="submit"
         class="pill-button pill-button--primary rsvp__submit"
       >
-        Confirm RSVP
+        Confirmar Asistencia
       </button>
 
       <button type="button" class="rsvp__back" id="rsvp-back">
-        Change response
+        Cambiar respuesta
       </button>
     </form>
 
-    <!-- Step 3: Confirmation -->
     <div
       class="rsvp__step rsvp__confirmation"
       id="rsvp-confirmation"
@@ -137,24 +134,23 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
         </svg>
       </div>
       <p class="rsvp__confirm-text text-headline-md" id="rsvp-confirm-msg">
-        Thank you!
+        ¡Gracias!
       </p>
       <p class="rsvp__confirm-sub text-body-md" id="rsvp-confirm-sub"></p>
       <button type="button" class="rsvp__edit-btn" id="rsvp-edit"
-        >Edit response</button
+        >Editar respuesta</button
       >
     </div>
 
-    <!-- Error -->
     <div class="rsvp__error" id="rsvp-error" style="display:none;">
       <p class="text-body-md">
-        Something went wrong. Please try again or contact us directly.
+        Algo salió mal. Por favor intenta de nuevo o contáctanos directamente.
       </p>
     </div>
   </div>
 
   <p class="rsvp__deadline text-body-md animate-on-scroll delay-1">
-    Please RSVP by <strong>{deadlineDate}</strong>
+    Por favor confirma tu asistencia antes del <strong>{deadlineDate}</strong>
   </p>
 </section>
 
@@ -174,7 +170,6 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
   const confirmMsg = document.getElementById("rsvp-confirm-msg")!;
   const confirmSub = document.getElementById("rsvp-confirm-sub")!;
 
-  // Step 1: Choose accept/decline
   document.querySelectorAll(".rsvp__choice").forEach((btn) => {
     btn.addEventListener("click", () => {
       const response = (btn as HTMLElement).dataset.response!;
@@ -192,14 +187,12 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
     });
   });
 
-  // Back button
   document.getElementById("rsvp-back")!.addEventListener("click", () => {
     form.style.display = "none";
     stepChoice.style.display = "block";
     errorEl.style.display = "none";
   });
 
-  // Guest stepper
   document.querySelectorAll(".rsvp__stepper-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const action = (btn as HTMLElement).dataset.action;
@@ -210,7 +203,6 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
     });
   });
 
-  // Submit
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorEl.style.display = "none";
@@ -236,11 +228,11 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
       form.style.display = "none";
 
       if (data.response === "accept") {
-        confirmMsg.textContent = "We can't wait to see you!";
-        confirmSub.textContent = `${data.name} — ${data.guests} guest${data.guests > 1 ? "s" : ""} confirmed.`;
+        confirmMsg.textContent = "¡Estamos ansiosos por verte!";
+        confirmSub.textContent = `${data.name} — ${data.guests} invitado${data.guests > 1 ? "s" : ""} confirmado${data.guests > 1 ? "s" : ""}.`;
       } else {
-        confirmMsg.textContent = "We'll miss you!";
-        confirmSub.textContent = `Thanks for letting us know, ${data.name}.`;
+        confirmMsg.textContent = "¡Te extrañaremos!";
+        confirmSub.textContent = `Gracias por avisarnos, ${data.name}.`;
       }
 
       confirmation.style.display = "flex";
@@ -249,7 +241,6 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
     }
   });
 
-  // Edit response
   document.getElementById("rsvp-edit")!.addEventListener("click", () => {
     confirmation.style.display = "none";
     stepChoice.style.display = "block";

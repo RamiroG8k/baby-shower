@@ -1,7 +1,4 @@
 ---
-/**
- * Decorative botanical sprig — section divider element.
- */
 interface Props {
   flip?: boolean;
 }
@@ -15,7 +12,6 @@ const { flip = false } = Astro.props;
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
 >
-  <!-- Main stem -->
   <path
     d="M10 28 Q30 26 60 20 Q90 14 110 16"
     stroke="var(--primary-container)"
@@ -23,14 +19,13 @@ const { flip = false } = Astro.props;
     stroke-linecap="round"
     fill="none"
   />
-  <!-- Leaves -->
   <ellipse cx="30" cy="22" rx="8" ry="4" fill="var(--primary-container)" opacity="0.5" transform="rotate(-20 30 22)" />
   <ellipse cx="45" cy="18" rx="7" ry="3.5" fill="var(--primary-container)" opacity="0.45" transform="rotate(15 45 18)" />
   <ellipse cx="60" cy="16" rx="8" ry="4" fill="var(--primary-container)" opacity="0.4" transform="rotate(-10 60 16)" />
   <ellipse cx="75" cy="14" rx="7" ry="3.5" fill="var(--primary-container)" opacity="0.35" transform="rotate(12 75 14)" />
   <ellipse cx="90" cy="14" rx="6" ry="3" fill="var(--primary-container)" opacity="0.3" transform="rotate(-8 90 14)" />
 
-  <!-- Opposite leaves -->
+
   <ellipse cx="38" cy="26" rx="7" ry="3.5" fill="var(--primary-container)" opacity="0.4" transform="rotate(25 38 26)" />
   <ellipse cx="55" cy="22" rx="6.5" ry="3" fill="var(--primary-container)" opacity="0.35" transform="rotate(-18 55 22)" />
   <ellipse cx="72" cy="18" rx="6" ry="3" fill="var(--primary-container)" opacity="0.3" transform="rotate(20 72 18)" />

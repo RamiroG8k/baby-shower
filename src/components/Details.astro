@@ -3,7 +3,7 @@ import event from '../data/event.json';
 ---
 
 <section class="info section animate-on-scroll" id="info">
-  <h2 class="info__title text-headline-md">Details</h2>
+  <h2 class="info__title text-headline-md">Detalles</h2>
 
   <div class="info__items">
     {event.dressCode && (
@@ -14,7 +14,7 @@ import event from '../data/event.json';
           </svg>
         </div>
         <div class="info__text">
-          <span class="info__label text-label">Dress Code</span>
+          <span class="info__label text-label">Código de Vestimenta</span>
           <span class="info__value">{event.dressCode}</span>
         </div>
       </div>
@@ -31,8 +31,8 @@ import event from '../data/event.json';
           </svg>
         </div>
         <div class="info__text">
-          <span class="info__label text-label">Kids</span>
-          <span class="info__value">{event.kidsAllowed ? 'Little ones are welcome!' : 'Adults only, please'}</span>
+          <span class="info__label text-label">Niños</span>
+          <span class="info__value">{event.kidsAllowed ? '¡Los pequeños son bienvenidos!' : 'Solo adultos, por favor'}</span>
         </div>
       </div>
     )}
@@ -48,7 +48,7 @@ import event from '../data/event.json';
           </svg>
         </div>
         <div class="info__text">
-          <span class="info__label text-label">Gift Registry</span>
+          <span class="info__label text-label">Mesa de Regalos</span>
           <a href={event.registryUrl} target="_blank" rel="noopener noreferrer" class="info__link">
             {event.registryName}
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">

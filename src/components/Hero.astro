@@ -9,7 +9,6 @@ import WatercolorBlob from './svg/WatercolorBlob.astro';
   <WatercolorBlob variant="blush" size="280px" position="top-left" />
 
   <div class="hero__content">
-    <!-- Heart icon -->
     <div class="hero__heart" style="animation: fadeIn 1s ease 0.2s both;">
       <svg width="20" height="18" viewBox="0 0 20 18" fill="none" aria-hidden="true">
         <path
@@ -21,15 +20,15 @@ import WatercolorBlob from './svg/WatercolorBlob.astro';
     </div>
 
     <p class="hero__invite text-label" style="animation: fadeUp 0.8s ease 0.3s both;">
-      Please Join Us For
+      Acompáñanos a celebrar el
     </p>
 
     <h1 class="hero__name" style="animation: fadeUp 0.8s ease 0.5s both;">
-      {event.parentName}'s
+      {event.eventType.toUpperCase()}
     </h1>
 
     <p class="hero__event-type" style="animation: fadeUp 0.8s ease 0.7s both;">
-      {event.eventType.toUpperCase()}
+      de {event.parentName}
     </p>
 
     <p class="hero__tagline" style="animation: fadeUp 0.8s ease 0.9s both;">

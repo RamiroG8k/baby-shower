@@ -1,0 +1,412 @@
+---
+import event from "../data/event.json";
+
+const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+---
+
+<section class="rsvp section animate-on-scroll" id="rsvp">
+  <h2 class="rsvp__title text-headline-md">Will you join us?</h2>
+
+  <div class="rsvp__card card" id="rsvp-card">
+    <!-- Step 1: Accept / Decline -->
+    <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
+      <div class="rsvp__buttons">
+        <button
+          class="pill-button pill-button--primary rsvp__choice"
+          data-response="accept"
+          type="button"
+        >
+          Joyfully Accept
+        </button>
+        <button
+          class="pill-button pill-button--outline rsvp__choice"
+          data-response="decline"
+          type="button"
+        >
+          Regretfully Decline
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Form fields (revealed on choice) -->
+    <form class="rsvp__step rsvp__form" id="rsvp-form" style="display:none;">
+      <input type="hidden" name="response" id="rsvp-response" value="" />
+
+      <div class="rsvp__field">
+        <label for="rsvp-name" class="text-label">Your Name</label>
+        <input
+          type="text"
+          id="rsvp-name"
+          name="name"
+          class="pill-input"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+
+      <div class="rsvp__field" id="rsvp-guests-field">
+        <label for="rsvp-guests" class="text-label">Number of Guests</label>
+        <div class="rsvp__stepper">
+          <button
+            type="button"
+            class="rsvp__stepper-btn"
+            data-action="decrement"
+            aria-label="Decrease guests"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+              ><path
+                d="M4 8h8"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"></path></svg
+            >
+          </button>
+          <input
+            type="number"
+            id="rsvp-guests"
+            name="guests"
+            class="rsvp__stepper-input"
+            value="1"
+            min="1"
+            max="5"
+            readonly
+          />
+          <button
+            type="button"
+            class="rsvp__stepper-btn"
+            data-action="increment"
+            aria-label="Increase guests"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+              ><path
+                d="M8 4v8M4 8h8"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"></path></svg
+            >
+          </button>
+        </div>
+      </div>
+
+      <div class="rsvp__field" id="rsvp-dietary-field">
+        <label for="rsvp-dietary" class="text-label"
+          >Dietary Restrictions <span class="rsvp__optional">(optional)</span
+          ></label
+        >
+        <textarea
+          id="rsvp-dietary"
+          name="dietary"
+          class="pill-input"
+          placeholder="Any allergies or preferences?"
+          rows="2"></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="pill-button pill-button--primary rsvp__submit"
+      >
+        Confirm RSVP
+      </button>
+
+      <button type="button" class="rsvp__back" id="rsvp-back">
+        Change response
+      </button>
+    </form>
+
+    <!-- Step 3: Confirmation -->
+    <div
+      class="rsvp__step rsvp__confirmation"
+      id="rsvp-confirmation"
+      style="display:none;"
+    >
+      <div class="rsvp__check">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="var(--primary-container)"
+          ></circle>
+          <path
+            d="M15 24L21 30L33 18"
+            stroke="var(--on-primary-container)"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="rsvp__check-path"></path>
+        </svg>
+      </div>
+      <p class="rsvp__confirm-text text-headline-md" id="rsvp-confirm-msg">
+        Thank you!
+      </p>
+      <p class="rsvp__confirm-sub text-body-md" id="rsvp-confirm-sub"></p>
+      <button type="button" class="rsvp__edit-btn" id="rsvp-edit"
+        >Edit response</button
+      >
+    </div>
+
+    <!-- Error -->
+    <div class="rsvp__error" id="rsvp-error" style="display:none;">
+      <p class="text-body-md">
+        Something went wrong. Please try again or contact us directly.
+      </p>
+    </div>
+  </div>
+
+  <p class="rsvp__deadline text-body-md animate-on-scroll delay-1">
+    Please RSVP by <strong>{deadlineDate}</strong>
+  </p>
+</section>
+
+<script>
+  const stepChoice = document.getElementById("rsvp-step-choice")!;
+  const form = document.getElementById("rsvp-form") as HTMLFormElement;
+  const confirmation = document.getElementById("rsvp-confirmation")!;
+  const errorEl = document.getElementById("rsvp-error")!;
+  const responseInput = document.getElementById(
+    "rsvp-response",
+  ) as HTMLInputElement;
+  const guestsField = document.getElementById("rsvp-guests-field")!;
+  const dietaryField = document.getElementById("rsvp-dietary-field")!;
+  const guestsInput = document.getElementById(
+    "rsvp-guests",
+  ) as HTMLInputElement;
+  const confirmMsg = document.getElementById("rsvp-confirm-msg")!;
+  const confirmSub = document.getElementById("rsvp-confirm-sub")!;
+
+  // Step 1: Choose accept/decline
+  document.querySelectorAll(".rsvp__choice").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const response = (btn as HTMLElement).dataset.response!;
+      responseInput.value = response;
+      stepChoice.style.display = "none";
+      form.style.display = "flex";
+
+      if (response === "decline") {
+        guestsField.style.display = "none";
+        dietaryField.style.display = "none";
+      } else {
+        guestsField.style.display = "block";
+        dietaryField.style.display = "block";
+      }
+    });
+  });
+
+  // Back button
+  document.getElementById("rsvp-back")!.addEventListener("click", () => {
+    form.style.display = "none";
+    stepChoice.style.display = "block";
+    errorEl.style.display = "none";
+  });
+
+  // Guest stepper
+  document.querySelectorAll(".rsvp__stepper-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const action = (btn as HTMLElement).dataset.action;
+      let val = parseInt(guestsInput.value);
+      if (action === "increment" && val < 5) val++;
+      if (action === "decrement" && val > 1) val--;
+      guestsInput.value = String(val);
+    });
+  });
+
+  // Submit
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.style.display = "none";
+
+    const data = {
+      response: responseInput.value,
+      name: (document.getElementById("rsvp-name") as HTMLInputElement).value,
+      guests: parseInt(guestsInput.value),
+      dietary: (document.getElementById("rsvp-dietary") as HTMLTextAreaElement)
+        .value,
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      form.style.display = "none";
+
+      if (data.response === "accept") {
+        confirmMsg.textContent = "We can't wait to see you!";
+        confirmSub.textContent = `${data.name} — ${data.guests} guest${data.guests > 1 ? "s" : ""} confirmed.`;
+      } else {
+        confirmMsg.textContent = "We'll miss you!";
+        confirmSub.textContent = `Thanks for letting us know, ${data.name}.`;
+      }
+
+      confirmation.style.display = "flex";
+    } catch {
+      errorEl.style.display = "block";
+    }
+  });
+
+  // Edit response
+  document.getElementById("rsvp-edit")!.addEventListener("click", () => {
+    confirmation.style.display = "none";
+    stepChoice.style.display = "block";
+  });
+</script>
+
+<style>
+  .rsvp {
+    text-align: center;
+  }
+
+  .rsvp__title {
+    margin-bottom: var(--space-lg);
+    color: var(--on-surface);
+  }
+
+  .rsvp__card {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .rsvp__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .rsvp__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .rsvp__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: left;
+  }
+
+  .rsvp__field .text-label {
+    color: var(--on-surface-variant);
+    padding-left: var(--space-sm);
+  }
+
+  .rsvp__optional {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--outline);
+  }
+
+  .rsvp__stepper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  .rsvp__stepper-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--outline-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant);
+    transition: all 0.2s ease;
+  }
+
+  .rsvp__stepper-btn:hover {
+    background: var(--surface-container);
+    border-color: var(--outline);
+  }
+
+  .rsvp__stepper-input {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    width: 48px;
+    border: none;
+    background: transparent;
+    color: var(--on-surface);
+    -moz-appearance: textfield;
+  }
+
+  .rsvp__stepper-input::-webkit-inner-spin-button,
+  .rsvp__stepper-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .rsvp__submit {
+    width: 100%;
+  }
+
+  .rsvp__back {
+    font-size: 13px;
+    color: var(--outline);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: var(--space-xs);
+  }
+
+  .rsvp__back:hover {
+    color: var(--on-surface-variant);
+  }
+
+  .rsvp__confirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    animation: scaleIn 0.5s ease both;
+    padding: var(--space-lg) 0;
+  }
+
+  .rsvp__check-path {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+    animation: drawCheck 0.5s ease 0.3s forwards;
+  }
+
+  @keyframes drawCheck {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .rsvp__confirm-sub {
+    color: var(--on-surface-variant);
+  }
+
+  .rsvp__edit-btn {
+    font-size: 13px;
+    color: var(--outline);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: var(--space-xs);
+    margin-top: var(--space-sm);
+  }
+
+  .rsvp__edit-btn:hover {
+    color: var(--on-surface-variant);
+  }
+
+  .rsvp__error {
+    color: var(--error);
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: var(--error-container);
+    border-radius: var(--radius-default);
+  }
+
+  .rsvp__deadline {
+    margin-top: var(--space-lg);
+    color: var(--on-surface-variant);
+  }
+</style>

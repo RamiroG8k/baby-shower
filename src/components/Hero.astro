@@ -1,0 +1,107 @@
+---
+import event from '../data/event.json';
+import Clothesline from './svg/Clothesline.astro';
+import WatercolorBlob from './svg/WatercolorBlob.astro';
+---
+
+<section class="hero" id="hero">
+  <WatercolorBlob variant="sage" size="350px" position="top-right" />
+  <WatercolorBlob variant="blush" size="280px" position="top-left" />
+
+  <div class="hero__content">
+    <!-- Heart icon -->
+    <div class="hero__heart" style="animation: fadeIn 1s ease 0.2s both;">
+      <svg width="20" height="18" viewBox="0 0 20 18" fill="none" aria-hidden="true">
+        <path
+          d="M10 17.5L8.55 16.17C3.4 11.48 0 8.38 0 4.5C0 1.41 2.42 -0.01 5.5 -0.01C7.24 -0.01 8.91 0.81 10 2.09C11.09 0.81 12.76 -0.01 14.5 -0.01C17.58 -0.01 20 1.41 20 4.5C20 8.38 16.6 11.48 11.45 16.17L10 17.5Z"
+          fill="var(--tertiary-container)"
+          opacity="0.7"
+        />
+      </svg>
+    </div>
+
+    <p class="hero__invite text-label" style="animation: fadeUp 0.8s ease 0.3s both;">
+      Please Join Us For
+    </p>
+
+    <h1 class="hero__name" style="animation: fadeUp 0.8s ease 0.5s both;">
+      {event.parentName}'s
+    </h1>
+
+    <p class="hero__event-type" style="animation: fadeUp 0.8s ease 0.7s both;">
+      {event.eventType.toUpperCase()}
+    </p>
+
+    <p class="hero__tagline" style="animation: fadeUp 0.8s ease 0.9s both;">
+      {event.tagline}
+    </p>
+
+    <div class="hero__illustration" style="animation: scaleIn 1s ease 1.1s both;">
+      <Clothesline />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-3xl) var(--space-md);
+    overflow: hidden;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .hero__heart {
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__invite {
+    color: var(--on-surface-variant);
+    letter-spacing: 0.12em;
+  }
+
+  .hero__name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--on-surface);
+    margin: var(--space-xs) 0;
+  }
+
+  .hero__event-type {
+    font-family: var(--font-body);
+    font-size: clamp(14px, 3vw, 18px);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--on-surface-variant);
+  }
+
+  .hero__tagline {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--outline);
+    margin-top: var(--space-sm);
+  }
+
+  .hero__illustration {
+    margin-top: var(--space-xl);
+    width: 100%;
+    max-width: 340px;
+  }
+</style>

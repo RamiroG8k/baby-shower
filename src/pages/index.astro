@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Countdown from '../components/Countdown.astro';
+import EventDetails from '../components/EventDetails.astro';
+import RsvpForm from '../components/RsvpForm.astro';
+import Details from '../components/Details.astro';
+import CalendarLinks from '../components/CalendarLinks.astro';
+import Contact from '../components/Contact.astro';
+import StickyRsvp from '../components/StickyRsvp.astro';
+---
+
+<Layout>
+  <main>
+    <Hero />
+
+    <Countdown />
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <EventDetails />
+
+    <RsvpForm />
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <Details />
+
+    <CalendarLinks />
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <Contact />
+  </main>
+
+  <StickyRsvp />
+</Layout>

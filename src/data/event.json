@@ -1,0 +1,21 @@
+{
+  "parentName": "Rafael Nikolai",
+  "eventType": "Baby Shower",
+  "tagline": "A little one is on the way!",
+  "date": "2026-06-20",
+  "dayOfWeek": "Saturday",
+  "startTime": "2:30 PM",
+  "endTime": "7:30 PM",
+  "venue": "Corral de la Moreria",
+  "address": "Priv. Pino Suarez 56, Zapopan, Jal. 45100",
+  "mapUrl": "https://maps.app.goo.gl/ascGdTDtsJxT5aSi8",
+  "rsvpDeadline": "2026-06-01",
+  "dressCode": "Garden casual",
+  "kidsAllowed": true,
+  "registryUrl": "https://example.com/registry",
+  "registryName": "Amazon Baby Registry",
+  "whatsapp": "+13314530630",
+  "phone": "+1 (234) 567-890",
+  "hostName": "Sugeit & Ramiro",
+  "closingMessage": "No podemos esperar para celebrar contigo!"
+}

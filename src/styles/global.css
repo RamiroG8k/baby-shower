@@ -1,0 +1,348 @@
+/* ─────────────────────────────────────────────
+   Lumina Soft — Baby Shower Invitation Tokens
+   ───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Colors — Lumina Soft */
+  --surface: #fafaf3;
+  --surface-dim: #dadad4;
+  --surface-bright: #fafaf3;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f4f4ee;
+  --surface-container: #eeeee8;
+  --surface-container-high: #e8e9e2;
+  --surface-container-highest: #e2e3dd;
+  --on-surface: #1a1c19;
+  --on-surface-variant: #43483f;
+  --inverse-surface: #2f312d;
+  --inverse-on-surface: #f1f1eb;
+  --outline: #73796e;
+  --outline-variant: #c3c8bc;
+  --surface-tint: #45673d;
+  --primary: #45673d;
+  --on-primary: #ffffff;
+  --primary-container: #95bb89;
+  --on-primary-container: #2a4b24;
+  --inverse-primary: #aad19d;
+  --secondary: #53634e;
+  --on-secondary: #ffffff;
+  --secondary-container: #d7e8ce;
+  --on-secondary-container: #596954;
+  --tertiary: #70585f;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #c6a9b1;
+  --on-tertiary-container: #533d44;
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+  --primary-fixed: #c6eeb8;
+  --primary-fixed-dim: #aad19d;
+  --secondary-fixed: #d7e8ce;
+  --secondary-fixed-dim: #bbcbb3;
+  --tertiary-fixed: #fadbe3;
+  --tertiary-fixed-dim: #ddbfc7;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Spacing (8px base grid) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Radii — Lumina Soft pill shapes */
+  --radius-sm: 0.5rem;
+  --radius-default: 1rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 16px rgba(26, 28, 25, 0.06);
+  --shadow-card: 0 4px 24px rgba(26, 28, 25, 0.08);
+  --shadow-elevated: 0 8px 40px rgba(26, 28, 25, 0.1);
+}
+
+/* ─── Reset ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--on-surface);
+  background-color: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Paper texture noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ─── Typography Helpers ─── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-headline-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.text-headline-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-body-md {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gentleSway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ─── Layout ─── */
+.section {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-4xl) var(--space-lg);
+  }
+}
+
+/* ─── Components ─── */
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
+
+.pill-button--primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.pill-button--primary:hover {
+  background-color: var(--on-primary-container);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.pill-button--secondary {
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+}
+
+.pill-button--secondary:hover {
+  background-color: var(--secondary-fixed-dim);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.pill-button--tertiary {
+  background-color: var(--tertiary-fixed);
+  color: var(--on-tertiary-container);
+}
+
+.pill-button--tertiary:hover {
+  background-color: var(--tertiary-fixed-dim);
+  transform: translateY(-1px);
+}
+
+.pill-button--outline {
+  background-color: transparent;
+  color: var(--on-surface-variant);
+  border: 1.5px solid var(--outline-variant);
+}
+
+.pill-button--outline:hover {
+  background-color: var(--surface-container-low);
+  border-color: var(--outline);
+}
+
+.card {
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.pill-input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border: 1.5px solid var(--outline-variant);
+  border-radius: var(--radius-full);
+  background: var(--surface-container-lowest);
+  color: var(--on-surface);
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  min-height: 48px;
+}
+
+.pill-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(69, 103, 61, 0.12);
+}
+
+.pill-input::placeholder {
+  color: var(--outline);
+}
+
+textarea.pill-input {
+  border-radius: var(--radius-md);
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ─── Section Divider ─── */
+.section-divider {
+  width: 60px;
+  height: 1.5px;
+  background: var(--outline-variant);
+  margin: 0 auto;
+  border-radius: var(--radius-full);
+}

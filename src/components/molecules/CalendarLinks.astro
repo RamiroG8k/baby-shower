@@ -3,14 +3,12 @@ import event from "@data/event.json";
 import Link from "@atoms/Link.astro";
 import { Icon } from 'astro-icon/components';
 
-// Build calendar URLs from event data
 const title = encodeURIComponent(`${event.parentName}'s ${event.eventType}`);
 const location = encodeURIComponent(`${event.venue}, ${event.address}`);
 const description = encodeURIComponent(`${event.tagline} Organizado por ${event.hostName}.`);
 
-// Parse times for calendar format (YYYYMMDDTHHMMSS)
 const dateStr = event.date.replace(/-/g, '');
-// Convert "2:00 PM" → 24h
+
 function to24h(time: string): string {
   const [timePart, period] = time.split(' ');
   let [h, m] = timePart.split(':').map(Number);
@@ -24,7 +22,6 @@ const endCal = `${dateStr}T${to24h(event.endTime)}`;
 
 const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startCal}/${endCal}&location=${location}&details=${description}`;
 
-// ICS content for Apple/Outlook
 const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT

@@ -1,7 +1,7 @@
 ---
 import event from "@data/event.json";
 import { Icon } from 'astro-icon/components';
-import Link from "../atoms/Link.astro";
+import Link from "@atoms/Link.astro";
 
 const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`¡Hola! Sobre el Baby Shower de ${event.parentName}...`)}`;
 ---

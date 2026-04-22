@@ -1,8 +1,9 @@
 ---
-import event from "../../data/event.json";
-import Button from "../atoms/Button.astro";
-import Input from "../atoms/Input.astro";
+import event from "@data/event.json";
 
+import { Icon } from "astro-icon/components";
+import Button from "@/components/atoms/Button.astro";
+import Input from "@/components/atoms/Input.astro";
 const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
   month: "long",
   day: "numeric",
@@ -16,18 +17,10 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
   <div class="rsvp__card card" id="rsvp-card">
     <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
       <div class="rsvp__buttons">
-        <Button
-          variant="primary"
-          class="rsvp__choice"
-          data-response="accept"
-        >
+        <Button variant="primary" class="rsvp__choice" data-response="accept">
           Asistiré con gusto
         </Button>
-        <Button
-          variant="outline"
-          class="rsvp__choice"
-          data-response="decline"
-        >
+        <Button variant="outline" class="rsvp__choice" data-response="decline">
           No podré asistir
         </Button>
       </div>
@@ -56,13 +49,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
             data-action="decrement"
             aria-label="Decrease guests"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-              ><path
-                d="M4 8h8"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"></path></svg
-            >
+            <Icon name="minus" width="16" height="16" />
           </button>
           <input
             type="number"
@@ -80,20 +67,15 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
             data-action="increment"
             aria-label="Increase guests"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-              ><path
-                d="M8 4v8M4 8h8"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"></path></svg
-            >
+            <Icon name="plus" width="16" height="16" />
           </button>
         </div>
       </div>
 
       <div class="rsvp__field" id="rsvp-dietary-field">
         <label for="rsvp-dietary" class="text-label"
-          >Restricciones Alimenticias <span class="rsvp__optional">(opcional)</span
+          >Restricciones Alimenticias <span class="rsvp__optional"
+            >(opcional)</span
           ></label
         >
         <Input
@@ -105,11 +87,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
         />
       </div>
 
-      <Button
-        type="submit"
-        variant="primary"
-        class="rsvp__submit"
-      >
+      <Button type="submit" variant="primary" class="rsvp__submit">
         Confirmar Asistencia
       </Button>
 
@@ -124,17 +102,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
       style="display:none;"
     >
       <div class="rsvp__check">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="24" fill="var(--primary-container)"
-          ></circle>
-          <path
-            d="M15 24L21 30L33 18"
-            stroke="var(--on-primary-container)"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="rsvp__check-path"></path>
-        </svg>
+        <Icon name="check-success" width="48" height="48" />
       </div>
       <p class="rsvp__confirm-text text-headline-md" id="rsvp-confirm-msg">
         ¡Gracias!

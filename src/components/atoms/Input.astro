@@ -1,0 +1,42 @@
+---
+interface Props {
+  type?: 'text' | 'email' | 'tel' | 'number' | 'textarea';
+  name: string;
+  id?: string;
+  placeholder?: string;
+  required?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const { 
+  type = 'text', 
+  name, 
+  id = name, 
+  placeholder, 
+  required = false,
+  class: className,
+  ...rest 
+} = Astro.props;
+---
+
+{type === 'textarea' ? (
+  <textarea
+    name={name}
+    id={id}
+    placeholder={placeholder}
+    required={required}
+    class:list={['pill-input', className]}
+    {...rest}
+  />
+) : (
+  <input
+    type={type}
+    name={name}
+    id={id}
+    placeholder={placeholder}
+    required={required}
+    class:list={['pill-input', className]}
+    {...rest}
+  />
+)}

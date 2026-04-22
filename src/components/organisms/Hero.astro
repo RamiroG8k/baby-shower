@@ -1,7 +1,7 @@
 ---
 import event from "@data/event.json";
-import Clothesline from "@atoms/Clothesline.astro";
-import WatercolorBlob from "@atoms/WatercolorBlob.astro";
+import { Icon } from 'astro-icon/components';
+import WatercolorBlob from "../svg/WatercolorBlob.astro";
 ---
 
 <section class="hero" id="hero">
@@ -36,7 +36,7 @@ import WatercolorBlob from "@atoms/WatercolorBlob.astro";
     </p>
 
     <div class="hero__illustration" style="animation: scaleIn 1s ease 1.1s both;">
-      <Clothesline />
+      <Icon name="clothesline" class="clothesline" />
     </div>
   </div>
 </section>
@@ -101,6 +101,6 @@ import WatercolorBlob from "@atoms/WatercolorBlob.astro";
   .hero__illustration {
     margin-top: var(--space-xl);
     width: 100%;
-    max-width: 340px;
+    max-width: 440px;
   }
 </style>

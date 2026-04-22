@@ -1,14 +1,14 @@
 ---
 import event from "@data/event.json";
-import Botanical from "@atoms/Botanical.astro";
 import { Icon } from 'astro-icon/components';
+import Link from "../atoms/Link.astro";
 
 const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`¡Hola! Sobre el Baby Shower de ${event.parentName}...`)}`;
 ---
 
 <section class="contact section animate-on-scroll" id="contact">
   <div class="contact__botanical">
-    <Botanical flip />
+    <Icon name="botanical" class="botanical botanical--flip" />
   </div>
 
   <p class="contact__message font-display">
@@ -20,23 +20,24 @@ const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${en
   </p>
 
   <div class="contact__channels">
-    <a
+    <Link
       href={waLink}
       target="_blank"
-      rel="noopener noreferrer"
-      class="pill-button pill-button--primary contact__btn"
+      variant="primary"
+      class="contact__btn"
     >
       <Icon name="whatsapp" width="18" height="18" aria-hidden="true" />
       Contáctanos por WhatsApp
-    </a>
+    </Link>
 
-    <a
+    <Link
       href={`tel:${event.whatsapp.replace(/[^0-9+]/g, '')}`}
-      class="pill-button pill-button--outline contact__btn"
+      variant="outline"
+      class="contact__btn"
     >
       <Icon name="phone" width="16" height="16" aria-hidden="true" />
       {event.phone}
-    </a>
+    </Link>
   </div>
 </section>
 

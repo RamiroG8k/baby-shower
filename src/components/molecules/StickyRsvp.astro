@@ -1,10 +1,15 @@
 ---
+import Link from "../atoms/Link.astro";
 ---
 
 <div class="sticky-rsvp" id="sticky-rsvp" aria-hidden="true">
-  <a href="#rsvp" class="pill-button pill-button--primary sticky-rsvp__btn">
+  <Link 
+    href="#rsvp" 
+    variant="primary" 
+    class="sticky-rsvp__btn"
+  >
     Confirmar Asistencia
-  </a>
+  </Link>
 </div>
 
 <script>

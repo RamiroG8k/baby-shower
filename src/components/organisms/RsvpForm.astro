@@ -1,5 +1,7 @@
 ---
 import event from "../../data/event.json";
+import Button from "../atoms/Button.astro";
+import Input from "../atoms/Input.astro";
 
 const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
   month: "long",
@@ -14,20 +16,20 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
   <div class="rsvp__card card" id="rsvp-card">
     <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
       <div class="rsvp__buttons">
-        <button
-          class="pill-button pill-button--primary rsvp__choice"
+        <Button
+          variant="primary"
+          class="rsvp__choice"
           data-response="accept"
-          type="button"
         >
           Asistiré con gusto
-        </button>
-        <button
-          class="pill-button pill-button--outline rsvp__choice"
+        </Button>
+        <Button
+          variant="outline"
+          class="rsvp__choice"
           data-response="decline"
-          type="button"
         >
           No podré asistir
-        </button>
+        </Button>
       </div>
     </div>
 
@@ -36,11 +38,10 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
 
       <div class="rsvp__field">
         <label for="rsvp-name" class="text-label">Tu Nombre</label>
-        <input
+        <Input
           type="text"
           id="rsvp-name"
           name="name"
-          class="pill-input"
           placeholder="Escribe tu nombre"
           required
         />
@@ -95,20 +96,22 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
           >Restricciones Alimenticias <span class="rsvp__optional">(opcional)</span
           ></label
         >
-        <textarea
+        <Input
+          type="textarea"
           id="rsvp-dietary"
           name="dietary"
-          class="pill-input"
           placeholder="¿Alguna alergia o preferencia?"
-          rows="2"></textarea>
+          rows="2"
+        />
       </div>
 
-      <button
+      <Button
         type="submit"
-        class="pill-button pill-button--primary rsvp__submit"
+        variant="primary"
+        class="rsvp__submit"
       >
         Confirmar Asistencia
-      </button>
+      </Button>
 
       <button type="button" class="rsvp__back" id="rsvp-back">
         Cambiar respuesta

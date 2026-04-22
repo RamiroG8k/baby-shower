@@ -1,7 +1,7 @@
 ---
 import event from "../../data/event.json";
-import Botanical from "../atoms/Botanical.astro";
 import { Icon } from "astro-icon/components";
+import Link from "../atoms/Link.astro";
 
 const dateObj = new Date(event.date);
 const monthName = dateObj.toLocaleDateString("es-MX", { month: "long" });
@@ -11,7 +11,7 @@ const year = dateObj.getUTCFullYear();
 
 <section class="details section" id="details">
   <div class="details__botanical animate-on-scroll">
-    <Botanical />
+    <Icon name="botanical" class="botanical" />
   </div>
 
   <div class="details__grid animate-on-scroll delay-1">
@@ -49,15 +49,15 @@ const year = dateObj.getUTCFullYear();
       ></iframe>
     </div>
 
-    <a
+    <Link
       href={event.mapUrl}
       target="_blank"
-      rel="noopener noreferrer"
-      class="pill-button pill-button--secondary details__map-link"
+      variant="secondary"
+      class="details__map-link"
     >
       <Icon name="map" width="14" height="14" aria-hidden="true" />
       Ver en el Mapa
-    </a>
+    </Link>
   </div>
 </section>
 

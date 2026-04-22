@@ -1,5 +1,6 @@
 ---
 import event from "@data/event.json";
+import Link from "../atoms/Link.astro";
 import { Icon } from 'astro-icon/components';
 
 // Build calendar URLs from event data
@@ -42,33 +43,35 @@ const icsDataUri = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsCon
   <p class="calendar__label text-label">Reserva la Fecha</p>
 
   <div class="calendar__links">
-    <a
+    <Link
       href={googleUrl}
       target="_blank"
-      rel="noopener noreferrer"
-      class="pill-button pill-button--secondary calendar__btn"
+      variant="secondary"
+      class="calendar__btn"
     >
       <Icon name="google-calendar" width="16" height="16" aria-hidden="true" />
       Google
-    </a>
+    </Link>
 
-    <a
+    <Link
       href={icsDataUri}
       download={`${event.parentName}-baby-shower.ics`}
-      class="pill-button pill-button--secondary calendar__btn"
+      variant="secondary"
+      class="calendar__btn"
     >
       <Icon name="apple-calendar" width="16" height="16" aria-hidden="true" />
       Apple
-    </a>
+    </Link>
 
-    <a
+    <Link
       href={icsDataUri}
       download={`${event.parentName}-baby-shower.ics`}
-      class="pill-button pill-button--secondary calendar__btn"
+      variant="secondary"
+      class="calendar__btn"
     >
       <Icon name="outlook-calendar" width="16" height="16" aria-hidden="true" />
       Outlook
-    </a>
+    </Link>
   </div>
 </section>
 

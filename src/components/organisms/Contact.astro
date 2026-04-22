@@ -1,6 +1,6 @@
 ---
-import event from '../../data/event.json';
-import Botanical from '../atoms/Botanical.astro';
+import event from "@data/event.json";
+import Botanical from "@atoms/Botanical.astro";
 import { Icon } from 'astro-icon/components';
 
 const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`¡Hola! Sobre el Baby Shower de ${event.parentName}...`)}`;

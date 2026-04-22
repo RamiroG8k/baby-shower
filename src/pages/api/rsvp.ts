@@ -1,40 +1,26 @@
 import type { APIRoute } from 'astro';
-import { readFile, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
-
-const RSVP_FILE = join(process.cwd(), 'rsvps.json');
-
-async function getRsvps(): Promise<any[]> {
-  try {
-    const data = await readFile(RSVP_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
+import { RSVP } from '@models/RSVP';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { response, name, guests, dietary, timestamp } = body;
 
-    if (!response || !name || !['accept', 'decline'].includes(response)) {
+    if (!RSVP.validate(body)) {
       return new Response(JSON.stringify({ error: 'Invalid data' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    const rsvps = await getRsvps();
-    rsvps.push({
-      response,
-      name: name.trim(),
-      guests: response === 'accept' ? (guests || 1) : 0,
-      dietary: dietary?.trim() || '',
-      timestamp: timestamp || new Date().toISOString(),
+    const rsvp = new RSVP({
+      response: body.response,
+      name: body.name.trim(),
+      guests: body.response === 'accept' ? (body.guests || 1) : 0,
+      dietary: body.dietary?.trim() || '',
+      timestamp: body.timestamp || new Date().toISOString(),
     });
 
-    await writeFile(RSVP_FILE, JSON.stringify(rsvps, null, 2));
+    await rsvp.save();
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,

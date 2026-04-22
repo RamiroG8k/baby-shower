@@ -10,7 +10,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@data/*": ["src/data/*"],
       "@styles/*": ["src/styles/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@models/*": ["src/models/*"]
     }
   },
   "include": [".astro/types.d.ts", "**/*"],

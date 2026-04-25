@@ -1,9 +1,9 @@
 ---
-import event from "@data/event.json";
+import { Event } from '@models/Event';
 import { Icon } from 'astro-icon/components';
-import Link from "@atoms/Link.astro";
+import Link from '@atoms/Link.astro';
 
-const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`¡Hola! Sobre el Baby Shower de ${event.parentName}...`)}`;
+const event = Event.getInstance();
 ---
 
 <section class="contact section animate-on-scroll" id="contact">
@@ -12,16 +12,16 @@ const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${en
   </div>
 
   <p class="contact__message font-display">
-    {event.closingMessage}
+    {event.data.closingMessage}
   </p>
 
   <p class="contact__host text-body-md">
-    Con cariño, <strong>{event.hostName}</strong>
+    Con cariño, <strong>{event.data.hostName}</strong>
   </p>
 
   <div class="contact__channels">
     <Link
-      href={waLink}
+      href={event.whatsAppUrl}
       target="_blank"
       variant="primary"
       class="contact__btn"
@@ -31,12 +31,12 @@ const waLink = `https://wa.me/${event.whatsapp.replace(/[^0-9]/g, '')}?text=${en
     </Link>
 
     <Link
-      href={`tel:${event.whatsapp.replace(/[^0-9+]/g, '')}`}
+      href={event.phoneUrl}
       variant="outline"
       class="contact__btn"
     >
       <Icon name="phone" width="16" height="16" aria-hidden="true" />
-      {event.phone}
+      {event.data.phone}
     </Link>
   </div>
 </section>

@@ -53,4 +53,14 @@ export class Event {
       year: 'numeric'
     });
   }
+
+  get whatsAppUrl(): string {
+    const number = this.data.whatsapp.replace(/[^0-9]/g, '');
+    const text = encodeURIComponent(`¡Hola! Sobre el Baby Shower de ${this.data.parentName}...`);
+    return `https://wa.me/${number}?text=${text}`;
+  }
+
+  get phoneUrl(): string {
+    return `tel:${this.data.phone.replace(/[^0-9+]/g, '')}`;
+  }
 }

@@ -14,14 +14,7 @@ const dayNumber = dateObj.getUTCDate();
 const year = dateObj.getUTCFullYear();
 
 const encodedAddress = encodeURIComponent(event.address);
-const webMapUrl = `https://maps.app.goo.gl/ascGdTDtsJxT5aSi8`;
-const iOSMapUrl = `https://maps.apple.com/?daddr=${encodedAddress}`;
-const androidMapUrl = `geo:0,0?q=${encodedAddress}`;
-
-const isIOS =
-    Astro.request.headers.get("user-agent")?.includes("iPhone") ||
-    Astro.request.headers.get("user-agent")?.includes("iPad");
-const mapLinkUrl = isIOS ? iOSMapUrl : androidMapUrl;
+const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
 ---
 
 <section class="details section" id="details">
@@ -80,19 +73,15 @@ const mapLinkUrl = isIOS ? iOSMapUrl : androidMapUrl;
 
     <Separator visible={false} />
 
-    <Button
-        class="details__map-btn"
-        data-map-link={mapLinkUrl}
-        data-web-link={webMapUrl}
-        onclick={`
-                const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-                const link = isMobile ? this.dataset.mapLink : this.dataset.webLink;
-                window.open(link, isMobile ? '_self' : '_blank');
-            `}
+    <Link
+        href={mapUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="details__map-link"
     >
         <Icon name="map" width="14" height="14" aria-hidden="true" />
         Abrir en Maps
-    </Button>
+    </Link>
 </section>
 
 <style>
@@ -174,9 +163,22 @@ const mapLinkUrl = isIOS ? iOSMapUrl : androidMapUrl;
     }
 
     .details__map-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
         font-size: 13px;
         padding: var(--space-sm) var(--space-lg);
         min-height: 40px;
         margin-top: var(--space-xs);
+        background: var(--surface-container-low);
+        color: var(--on-surface);
+        border-radius: var(--radius-full);
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .details__map-link:hover {
+        background: var(--surface-container);
     }
 </style>

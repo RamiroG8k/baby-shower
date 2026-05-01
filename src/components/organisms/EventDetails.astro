@@ -60,15 +60,17 @@ const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr
     <Separator visible={false} />
 
     <Card variant="primary">
-        <iframe
-            width="100%"
-            height="500"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0"
-            src="https://maps.google.com/maps?width=100%25&height=500&hl=en&q=Priv.%20Pino%20Suarez%2056,%20Zapopan,%2045100%20Zapopan,%20Jal.+(Baby%20Shower)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
-        ></iframe>
+        <div style="border-radius: 1rem; overflow: hidden;">
+            <iframe
+                width="100%"
+                height={300}
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&height=500&hl=en&q=Priv.%20Pino%20Suarez%2056,%20Zapopan,%2045100%20Zapopan,%20Jal.+(Baby%20Shower)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
+            ></iframe>
+        </div>
     </Card>
 
     <Separator visible={false} />

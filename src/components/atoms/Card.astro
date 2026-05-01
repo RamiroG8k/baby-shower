@@ -1,14 +1,24 @@
 ---
 interface Props {
+    spacing?: "sm" | "md" | "lg";
     variant?: "primary" | "secondary";
     class?: string;
     id?: string;
 }
 
-const { variant = "secondary", class: className, id } = Astro.props;
+const {
+    spacing = "md",
+    variant = "secondary",
+    class: className,
+    id,
+} = Astro.props;
 ---
 
-<div class:list={["card", `card--${variant}`, className]} id={id}>
+<div
+    class:list={["card", `card--${variant}`, className]}
+    id={id}
+    data-spacing={spacing}
+>
     <slot />
 </div>
 
@@ -16,7 +26,6 @@ const { variant = "secondary", class: className, id } = Astro.props;
     .card {
         background: var(--surface-container-lowest);
         border-radius: var(--radius-md);
-        padding: var(--space-md) var(--space-lg);
     }
 
     .card--primary {
@@ -25,5 +34,17 @@ const { variant = "secondary", class: className, id } = Astro.props;
 
     .card--secondary {
         background: var(--surface-container-low);
+    }
+
+    [data-spacing="sm"] {
+        padding: var(--space-sm);
+    }
+
+    [data-spacing="lg"] {
+        padding: var(--space-lg);
+    }
+
+    [data-spacing="md"] {
+        padding: var(--space-md);
     }
 </style>

@@ -1,51 +1,61 @@
 ---
 interface Props {
-  variant?: 'sage' | 'blush' | 'cream';
-  size?: string;
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center';
+    variant?: "sage" | "blush" | "cream";
+    size?: string;
+    position?:
+        | "top-left"
+        | "top-right"
+        | "bottom-left"
+        | "bottom-right"
+        | "center";
 }
 
-const { variant = 'sage', size = '300px', position = 'top-right' } = Astro.props;
+const {
+    variant = "sage",
+    size = "300px",
+    position = "top-right",
+} = Astro.props;
 
 const colors = {
-  sage: 'var(--primary-container)',
-  blush: 'var(--tertiary-fixed)',
-  cream: 'var(--secondary-container)',
+    sage: "var(--primary-container)",
+    blush: "var(--tertiary-fixed)",
+    cream: "var(--secondary-container)",
 };
 
 const positions = {
-  'top-left': { top: '-10%', left: '-10%' },
-  'top-right': { top: '-10%', right: '-10%' },
-  'bottom-left': { bottom: '-10%', left: '-10%' },
-  'bottom-right': { bottom: '-10%', right: '-10%' },
-  'center': { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
+    "top-left": { top: "-10%", left: "-10%" },
+    "top-right": { top: "-10%", right: "-10%" },
+    "bottom-left": { bottom: "-10%", left: "-10%" },
+    "bottom-right": { bottom: "-10%", right: "-10%" },
+    center: { top: "50%", left: "50%", transform: "translate(-50%, -50%)" },
 };
 
 const pos = positions[position];
 ---
 
 <div
-  class="watercolor-blob"
-  style={`
+    class="watercolor-blob"
+    style={`
     width: ${size};
     height: ${size};
     background: radial-gradient(ellipse at center, ${colors[variant]} 0%, transparent 70%);
-    ${pos.top ? `top: ${pos.top};` : ''}
-    ${pos.right ? `right: ${pos.right};` : ''}
-    ${pos.bottom ? `bottom: ${pos.bottom};` : ''}
-    ${pos.left ? `left: ${pos.left};` : ''}
-    ${pos.transform ? `transform: ${pos.transform};` : ''}
+    ${pos.top ? `top: ${pos.top};` : ""}
+    ${pos.right ? `right: ${pos.right};` : ""}
+    ${pos.bottom ? `bottom: ${pos.bottom};` : ""}
+    ${pos.left ? `left: ${pos.left};` : ""}
+    ${pos.transform ? `transform: ${pos.transform};` : ""}
   `}
-  aria-hidden="true"
-></div>
+    aria-hidden="true"
+>
+</div>
 
 <style>
-  .watercolor-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 0;
-  }
+    .watercolor-blob {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: -1;
+    }
 </style>

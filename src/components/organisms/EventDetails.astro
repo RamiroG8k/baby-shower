@@ -1,45 +1,16 @@
 ---
 import event from "@data/event.json";
 import { Icon } from "astro-icon/components";
-import Text from "@atoms/Text.astro";
 import Link from "@atoms/Link.astro";
 import Headline from "@atoms/Headline.astro";
-import Button from "@atoms/Button.astro";
 import Card from "../atoms/Card.astro";
 import Separator from "../atoms/Separator.astro";
-
-const dateObj = new Date(event.date);
-const monthName = dateObj.toLocaleDateString("es-MX", { month: "long" });
-const dayNumber = dateObj.getUTCDate();
-const year = dateObj.getUTCFullYear();
 
 const encodedAddress = encodeURIComponent(event.address);
 const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
 ---
 
 <section class="details section" id="details">
-    <div class="details__grid animate-on-scroll delay-1">
-        <div class="details__block">
-            <Text as="span" variant="label" class="details__label"
-                >{event.dayOfWeek}</Text
-            >
-            <span class="details__day">{dayNumber}</span>
-            <span class="details__sub">{monthName} {year}</span>
-        </div>
-
-        <div class="details__vdivider" aria-hidden="true"></div>
-
-        <div class="details__block">
-            <Text as="span" variant="label" class="details__label">Hora</Text>
-            <span class="details__time">{event.startTime}</span>
-            {
-                event.endTime && (
-                    <span class="details__sub">a {event.endTime}</span>
-                )
-            }
-        </div>
-    </div>
-
     <Card variant="secondary">
         <div class="details__location animate-on-scroll delay-2">
             <div class="details__location-icon">
@@ -90,57 +61,6 @@ const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr
     .details {
         text-align: center;
         padding-top: var(--space-lg);
-    }
-
-    .details__botanical {
-        margin-bottom: var(--space-xl);
-    }
-
-    .details__grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--space-xl);
-        margin-bottom: var(--space-2xl);
-    }
-
-    .details__block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-xs);
-    }
-
-    .details__label {
-        color: var(--outline);
-    }
-
-    .details__day {
-        font-family: var(--font-display);
-        font-size: clamp(3rem, 10vw, 4.5rem);
-        font-weight: 400;
-        line-height: 1;
-        color: var(--on-surface);
-    }
-
-    .details__time {
-        font-family: var(--font-display);
-        font-size: clamp(1.5rem, 5vw, 2rem);
-        font-weight: 400;
-        line-height: 1;
-        color: var(--on-surface);
-    }
-
-    .details__sub {
-        font-size: 13px;
-        color: var(--on-surface-variant);
-    }
-
-    .details__vdivider {
-        width: 1.5px;
-        height: 60px;
-        background: var(--outline-variant);
-        border-radius: var(--radius-full);
     }
 
     .details__location {

@@ -8,6 +8,9 @@
     --text-label: calc(var(--text-unit) * 1.2);
     --text-body-md: calc(var(--text-unit) * 1.4);
     --text-body-lg: calc(var(--text-unit) * 1.6);
+    --text-body-xl: calc(var(--text-unit) * 2);
+    --text-body-2xl: calc(var(--text-unit) * 3);
+    --text-body-3xl: calc(var(--text-unit) * 4);
 
     --text-heading-md: clamp(1.5rem, 4vw, 2rem);
     --text-heading-lg: clamp(2.5rem, 6vw, 4rem);

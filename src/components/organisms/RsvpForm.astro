@@ -3,6 +3,7 @@ import event from "@data/event.json";
 
 import { Icon } from "astro-icon/components";
 import Button from "@/components/atoms/Button.astro";
+import Card from "@/components/atoms/Card.astro";
 import Separator from "@/components/atoms/Separator.astro";
 import Link from "@/components/atoms/Link.astro";
 import Headline from "@/components/atoms/Headline.astro";
@@ -31,7 +32,9 @@ const whatsappAdviseUrl = `https://wa.me/${whatsappPhone}?text=${adviseText}`;
 
     <Separator visible={false} />
 
-    <div class="rsvp__card card" id="rsvp-card">
+    <Card variant="primary" id="rsvp-card">
+        <Separator visible={false} />
+
         <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
             <div class="rsvp__buttons">
                 <Button variant="primary" class="rsvp__choice" id="btn-accept">
@@ -75,7 +78,9 @@ const whatsappAdviseUrl = `https://wa.me/${whatsappPhone}?text=${adviseText}`;
                 Editar respuesta
             </button>
         </div>
-    </div>
+
+        <Separator visible={false} />
+    </Card>
 
     <Separator visible={false} />
 

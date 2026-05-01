@@ -277,13 +277,6 @@ textarea {
     border-color: var(--outline);
 }
 
-.card {
-    background: var(--surface-container-lowest);
-    border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    box-shadow: var(--shadow-card);
-}
-
 .pill-input {
     width: 100%;
     padding: var(--space-md) var(--space-lg);

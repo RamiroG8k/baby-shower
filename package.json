@@ -2,9 +2,6 @@
   "name": "baby-shower-invite",
   "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
   "scripts": {
     "start:local": "astro dev --host",
     "start:prod": "astro build && astro preview --host",

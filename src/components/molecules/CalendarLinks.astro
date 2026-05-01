@@ -3,6 +3,7 @@ import { Event } from "@models/Event";
 import { CalendarEvent } from "@models/CalendarEvent";
 import Link from "@atoms/Link.astro";
 import Text from "@atoms/Text.astro";
+import Separator from "@atoms/Separator.astro";
 import { Icon } from "astro-icon/components";
 
 const event = Event.getInstance();
@@ -10,7 +11,9 @@ const calendar = new CalendarEvent(event.data);
 ---
 
 <section class="calendar section animate-on-scroll" id="calendar">
-    <Text as="p" variant="label" class="calendar__label">Reserva la Fecha</Text>
+    <Text variant="label">Reserva la Fecha</Text>
+
+    <Separator visible={false} />
 
     <div class="calendar__links">
         <Link
@@ -40,22 +43,7 @@ const calendar = new CalendarEvent(event.data);
                 height="16"
                 aria-hidden="true"
             />
-            Apple
-        </Link>
-
-        <Link
-            href={calendar.icsDataUri}
-            download={calendar.icsFilename}
-            variant="secondary"
-            class="calendar__btn"
-        >
-            <Icon
-                name="outlook-calendar"
-                width="16"
-                height="16"
-                aria-hidden="true"
-            />
-            Outlook
+            Apple / Otro
         </Link>
     </div>
 </section>

@@ -15,10 +15,12 @@ const { icon, label, class: className } = Astro.props;
     <div class="info-card__icon">
         <Icon name={icon} width="20" height="20" aria-hidden="true" />
     </div>
+
     <div class="info-card__content">
         <Text as="span" variant="label" class="info-card__label">
             {label}
         </Text>
+
         <slot />
     </div>
 </div>
@@ -36,8 +38,8 @@ const { icon, label, class: className } = Astro.props;
 
     .info-card__icon {
         flex-shrink: 0;
-        width: 36px;
-        height: 36px;
+        width: calc(var(--space-xl) * 1.2);
+        height: calc(var(--space-xl) * 1.2);
         display: flex;
         align-items: center;
         justify-content: center;

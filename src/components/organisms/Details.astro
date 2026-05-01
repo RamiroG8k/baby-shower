@@ -3,13 +3,14 @@ import event from "@data/event.json";
 import Link from "../atoms/Link.astro";
 import Headline from "../atoms/Headline.astro";
 import InfoCard from "../molecules/InfoCard.astro";
+import Separator from "../atoms/Separator.astro";
 import { Icon } from "astro-icon/components";
 ---
 
 <section class="info section animate-on-scroll" id="info">
     <Headline as="h2" variant="md">Detalles</Headline>
 
-    <hr class="separator" />
+    <Separator visible={false} />
 
     <div class="info__items">
         {
@@ -71,12 +72,5 @@ import { Icon } from "astro-icon/components";
         display: inline-flex;
         align-items: center;
         gap: 4px;
-    }
-
-    .separator {
-        border: 1px solid var(--outline);
-        margin: var(--space-sm) auto;
-        opacity: 0;
-        width: 70%;
     }
 </style>

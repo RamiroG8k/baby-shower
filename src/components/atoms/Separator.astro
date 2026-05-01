@@ -1,0 +1,31 @@
+---
+interface Props {
+    visible?: boolean;
+    class?: string;
+}
+
+const { visible = true, class: className } = Astro.props;
+---
+
+{
+    visible ? (
+        <hr class:list={["separator", className]} />
+    ) : (
+        <hr
+            class:list={["separator", "separator--hidden", className]}
+            aria-hidden="true"
+        />
+    )
+}
+
+<style>
+    .separator {
+        border: 1px solid var(--outline);
+        margin: var(--space-sm) auto;
+        width: 70%;
+    }
+
+    .separator--hidden {
+        opacity: 0;
+    }
+</style>

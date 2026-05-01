@@ -3,372 +3,177 @@ import event from "@data/event.json";
 
 import { Icon } from "astro-icon/components";
 import Button from "@/components/atoms/Button.astro";
-import Input from "@/components/atoms/Input.astro";
+import Separator from "@/components/atoms/Separator.astro";
+import Link from "@/components/atoms/Link.astro";
 import Headline from "@/components/atoms/Headline.astro";
 import Text from "@/components/atoms/Text.astro";
+import CalendarLinks from "@/components/molecules/CalendarLinks.astro";
+
 const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
-  month: "long",
-  day: "numeric",
-  year: "numeric",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
 });
+
+const whatsappPhone = event.whatsapp.replace(/\D/g, "");
+const declineText = encodeURIComponent(
+    "Hola, no podré asistir al baby shower. ¡Gracias por la invitación!",
+);
+const adviseText = encodeURIComponent(
+    "¡Hola! Tengo un mensaje para los papás...",
+);
+const whatsappDeclineUrl = `https://wa.me/${whatsappPhone}?text=${declineText}`;
+const whatsappAdviseUrl = `https://wa.me/${whatsappPhone}?text=${adviseText}`;
 ---
 
 <section class="rsvp section animate-on-scroll" id="rsvp">
-  <Headline as="h2" variant="md" class="rsvp__title">¿Nos acompañarás?</Headline>
+    <Headline as="h2" variant="md">¿Nos acompañarás?</Headline>
 
-  <div class="rsvp__card card" id="rsvp-card">
-    <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
-      <div class="rsvp__buttons">
-        <Button variant="primary" class="rsvp__choice" data-response="accept">
-          Asistiré con gusto
-        </Button>
-        <Button variant="outline" class="rsvp__choice" data-response="decline">
-          No podré asistir
-        </Button>
-      </div>
-    </div>
+    <Separator visible={false} />
 
-    <form class="rsvp__step rsvp__form" id="rsvp-form" style="display:none;">
-      <input type="hidden" name="response" id="rsvp-response" value="" />
+    <div class="rsvp__card card" id="rsvp-card">
+        <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
+            <div class="rsvp__buttons">
+                <Button variant="primary" class="rsvp__choice" id="btn-accept">
+                    Asistiré con gusto
+                </Button>
 
-      <div class="rsvp__field">
-        <Text as="label" variant="label" class="rsvp__field-label" for="rsvp-name">Tu Nombre</Text>
-        <Input
-          type="text"
-          id="rsvp-name"
-          name="name"
-          placeholder="Escribe tu nombre"
-          required
-        />
-      </div>
-
-      <div class="rsvp__field" id="rsvp-guests-field">
-        <Text as="label" variant="label" class="rsvp__field-label" for="rsvp-guests">Número de Invitados</Text>
-        <div class="rsvp__stepper">
-          <button
-            type="button"
-            class="rsvp__stepper-btn"
-            data-action="decrement"
-            aria-label="Decrease guests"
-          >
-            <Icon name="minus" width="16" height="16" />
-          </button>
-          <input
-            type="number"
-            id="rsvp-guests"
-            name="guests"
-            class="rsvp__stepper-input"
-            value="1"
-            min="1"
-            max="5"
-            readonly
-          />
-          <button
-            type="button"
-            class="rsvp__stepper-btn"
-            data-action="increment"
-            aria-label="Increase guests"
-          >
-            <Icon name="plus" width="16" height="16" />
-          </button>
+                <Link href={whatsappDeclineUrl} variant="outline">
+                    No podré asistir
+                </Link>
+            </div>
         </div>
-      </div>
 
-      <div class="rsvp__field" id="rsvp-dietary-field">
-        <Text as="label" variant="label" class="rsvp__field-label" for="rsvp-dietary">
-          Restricciones Alimenticias <span class="rsvp__optional">(opcional)</span>
-        </Text>
-        <Input
-          type="textarea"
-          id="rsvp-dietary"
-          name="dietary"
-          placeholder="¿Alguna alergia o preferencia?"
-          rows="2"
-        />
-      </div>
+        <div
+            class="rsvp__step rsvp__accepted"
+            id="rsvp-accepted"
+            style="display:none;"
+        >
+            <div class="rsvp__check">
+                <Icon name="check-success" width="48" height="48" />
+            </div>
+            <Headline as="p" variant="md" class="rsvp__confirm-text">
+                ¡Nos encantaría que nos acompañes!
+            </Headline>
+            <Text as="p" variant="body-md" class="rsvp__confirm-sub">
+                Confirma tu asistencia por WhatsApp y guarda la fecha en tu
+                calendario
+            </Text>
 
-      <Button type="submit" variant="primary" class="rsvp__submit">
-        Confirmar Asistencia
-      </Button>
+            <CalendarLinks />
 
-      <button type="button" class="rsvp__back" id="rsvp-back">
-        Cambiar respuesta
-      </button>
-    </form>
+            <a
+                href={whatsappAdviseUrl}
+                target="_blank"
+                class="rsvp__whatsapp-link"
+            >
+                <Icon name="whatsapp" width="20" height="20" />
+                Confirmar por WhatsApp
+            </a>
 
-    <div
-      class="rsvp__step rsvp__confirmation"
-      id="rsvp-confirmation"
-      style="display:none;"
+            <button type="button" class="rsvp__edit-btn" id="rsvp-edit">
+                Editar respuesta
+            </button>
+        </div>
+    </div>
+
+    <Separator visible={false} />
+
+    <Text
+        as="p"
+        variant="body-md"
+        class="rsvp__deadline animate-on-scroll delay-1"
     >
-      <div class="rsvp__check">
-        <Icon name="check-success" width="48" height="48" />
-      </div>
-      <Headline as="p" variant="md" class="rsvp__confirm-text" id="rsvp-confirm-msg">
-        ¡Gracias!
-      </Headline>
-      <Text as="p" variant="body-md" class="rsvp__confirm-sub" id="rsvp-confirm-sub"></Text>
-      <button type="button" class="rsvp__edit-btn" id="rsvp-edit"
-        >Editar respuesta</button
-      >
-    </div>
-
-    <div class="rsvp__error" id="rsvp-error" style="display:none;">
-      <Text as="p" variant="body-md">
-        Algo salió mal. Por favor intenta de nuevo o contáctanos directamente.
-      </Text>
-    </div>
-  </div>
-
-  <Text as="p" variant="body-md" class="rsvp__deadline animate-on-scroll delay-1">
-    Por favor confirma tu asistencia antes del <strong>{deadlineDate}</strong>
-  </Text>
+        Por favor confirma tu asistencia antes del <strong
+            >{deadlineDate}</strong
+        >
+    </Text>
 </section>
 
 <script>
-  const stepChoice = document.getElementById("rsvp-step-choice")!;
-  const form = document.getElementById("rsvp-form") as HTMLFormElement;
-  const confirmation = document.getElementById("rsvp-confirmation")!;
-  const errorEl = document.getElementById("rsvp-error")!;
-  const responseInput = document.getElementById(
-    "rsvp-response",
-  ) as HTMLInputElement;
-  const guestsField = document.getElementById("rsvp-guests-field")!;
-  const dietaryField = document.getElementById("rsvp-dietary-field")!;
-  const guestsInput = document.getElementById(
-    "rsvp-guests",
-  ) as HTMLInputElement;
-  const confirmMsg = document.getElementById("rsvp-confirm-msg")!;
-  const confirmSub = document.getElementById("rsvp-confirm-sub")!;
+    const stepChoice = document.getElementById("rsvp-step-choice")!;
+    const accepted = document.getElementById("rsvp-accepted")!;
+    const btnAccept = document.getElementById("btn-accept")!;
 
-  document.querySelectorAll(".rsvp__choice").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const response = (btn as HTMLElement).dataset.response!;
-      responseInput.value = response;
-      stepChoice.style.display = "none";
-      form.style.display = "flex";
-
-      if (response === "decline") {
-        guestsField.style.display = "none";
-        dietaryField.style.display = "none";
-      } else {
-        guestsField.style.display = "block";
-        dietaryField.style.display = "block";
-      }
+    btnAccept.addEventListener("click", () => {
+        stepChoice.style.display = "none";
+        accepted.style.display = "flex";
     });
-  });
 
-  document.getElementById("rsvp-back")!.addEventListener("click", () => {
-    form.style.display = "none";
-    stepChoice.style.display = "block";
-    errorEl.style.display = "none";
-  });
-
-  document.querySelectorAll(".rsvp__stepper-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const action = (btn as HTMLElement).dataset.action;
-      let val = parseInt(guestsInput.value);
-      if (action === "increment" && val < 5) val++;
-      if (action === "decrement" && val > 1) val--;
-      guestsInput.value = String(val);
+    document.getElementById("rsvp-edit")!.addEventListener("click", () => {
+        accepted.style.display = "none";
+        stepChoice.style.display = "block";
     });
-  });
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    errorEl.style.display = "none";
-
-    const data = {
-      response: responseInput.value,
-      name: (document.getElementById("rsvp-name") as HTMLInputElement).value,
-      guests: parseInt(guestsInput.value),
-      dietary: (document.getElementById("rsvp-dietary") as HTMLTextAreaElement)
-        .value,
-      timestamp: new Date().toISOString(),
-    };
-
-    try {
-      const res = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) throw new Error("Failed");
-
-      form.style.display = "none";
-
-      if (data.response === "accept") {
-        confirmMsg.textContent = "¡Estamos ansiosos por verte!";
-        confirmSub.textContent = `${data.name} — ${data.guests} invitado${data.guests > 1 ? "s" : ""} confirmado${data.guests > 1 ? "s" : ""}.`;
-      } else {
-        confirmMsg.textContent = "¡Te extrañaremos!";
-        confirmSub.textContent = `Gracias por avisarnos, ${data.name}.`;
-      }
-
-      confirmation.style.display = "flex";
-    } catch {
-      errorEl.style.display = "block";
-    }
-  });
-
-  document.getElementById("rsvp-edit")!.addEventListener("click", () => {
-    confirmation.style.display = "none";
-    stepChoice.style.display = "block";
-  });
 </script>
 
 <style>
-  .rsvp {
-    text-align: center;
-  }
-
-  .rsvp__title {
-    margin-bottom: var(--space-lg);
-    color: var(--on-surface);
-  }
-
-  .rsvp__card {
-    padding: var(--space-xl) var(--space-lg);
-  }
-
-  .rsvp__buttons {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .rsvp__form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-    animation: fadeUp 0.4s ease both;
-  }
-
-  .rsvp__field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    text-align: left;
-  }
-
-  .rsvp__field-label {
-    color: var(--on-surface-variant);
-    padding-left: var(--space-sm);
-  }
-
-  .rsvp__optional {
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: 0;
-    color: var(--outline);
-  }
-
-  .rsvp__stepper {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    justify-content: center;
-  }
-
-  .rsvp__stepper-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1.5px solid var(--outline-variant);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--on-surface-variant);
-    transition: all 0.2s ease;
-  }
-
-  .rsvp__stepper-btn:hover {
-    background: var(--surface-container);
-    border-color: var(--outline);
-  }
-
-  .rsvp__stepper-input {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
-    width: 48px;
-    border: none;
-    background: transparent;
-    color: var(--on-surface);
-    -moz-appearance: textfield;
-  }
-
-  .rsvp__stepper-input::-webkit-inner-spin-button,
-  .rsvp__stepper-input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-  }
-
-  .rsvp__submit {
-    width: 100%;
-  }
-
-  .rsvp__back {
-    font-size: 13px;
-    color: var(--outline);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    padding: var(--space-xs);
-  }
-
-  .rsvp__back:hover {
-    color: var(--on-surface-variant);
-  }
-
-  .rsvp__confirmation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
-    animation: scaleIn 0.5s ease both;
-    padding: var(--space-lg) 0;
-  }
-
-  .rsvp__check-path {
-    stroke-dasharray: 30;
-    stroke-dashoffset: 30;
-    animation: drawCheck 0.5s ease 0.3s forwards;
-  }
-
-  @keyframes drawCheck {
-    to {
-      stroke-dashoffset: 0;
+    .rsvp {
+        text-align: center;
     }
-  }
 
-  .rsvp__confirm-sub {
-    color: var(--on-surface-variant);
-  }
+    .rsvp__title {
+        margin-bottom: var(--space-lg);
+        color: var(--on-surface);
+    }
 
-  .rsvp__edit-btn {
-    font-size: 13px;
-    color: var(--outline);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    padding: var(--space-xs);
-    margin-top: var(--space-sm);
-  }
+    .rsvp__card {
+        padding: var(--space-xl) var(--space-lg);
+    }
 
-  .rsvp__edit-btn:hover {
-    color: var(--on-surface-variant);
-  }
+    .rsvp__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
 
-  .rsvp__error {
-    color: var(--error);
-    margin-top: var(--space-md);
-    padding: var(--space-md);
-    background: var(--error-container);
-    border-radius: var(--radius-default);
-  }
+    .rsvp__accepted {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-md);
+        animation: scaleIn 0.5s ease both;
+        padding: var(--space-lg) 0;
+    }
 
-  .rsvp__deadline {
-    margin-top: var(--space-lg);
-    color: var(--on-surface-variant);
-  }
+    .rsvp__confirm-sub {
+        color: var(--on-surface-variant);
+    }
+
+    .rsvp__edit-btn {
+        font-size: 13px;
+        color: var(--outline);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        padding: var(--space-xs);
+        margin-top: var(--space-sm);
+    }
+
+    .rsvp__edit-btn:hover {
+        color: var(--on-surface-variant);
+    }
+
+    .rsvp__whatsapp-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        padding: var(--space-sm) var(--space-md);
+        background: #25d366;
+        color: white;
+        border-radius: var(--radius-default);
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        margin-top: var(--space-md);
+    }
+
+    .rsvp__whatsapp-link:hover {
+        background: #128c7e;
+        transform: translateY(-1px);
+    }
+
+    .rsvp__deadline {
+        margin-top: var(--space-lg);
+        color: var(--on-surface-variant);
+    }
 </style>

@@ -1,7 +1,5 @@
 ---
 import { Event } from "@models/Event";
-import { Icon } from "astro-icon/components";
-import Link from "@atoms/Link.astro";
 import Text from "@atoms/Text.astro";
 import Headline from "@atoms/Headline.astro";
 
@@ -9,10 +7,6 @@ const event = Event.getInstance();
 ---
 
 <section class="contact section animate-on-scroll" id="contact">
-    <div class="contact__botanical">
-        <Icon name="botanical" class="botanical botanical--flip" />
-    </div>
-
     <Headline
         as="p"
         variant="md"
@@ -26,23 +20,6 @@ const event = Event.getInstance();
     <Text as="p" variant="body-md" class="contact__host">
         Con cariño, <strong>{event.data.hostName}</strong>
     </Text>
-
-    <div class="contact__channels">
-        <Link
-            href={event.whatsAppUrl}
-            target="_blank"
-            variant="primary"
-            class="contact__btn"
-        >
-            <Icon name="whatsapp" width="18" height="18" aria-hidden="true" />
-            Contáctanos por WhatsApp
-        </Link>
-
-        <Link href={event.phoneUrl} variant="outline" class="contact__btn">
-            <Icon name="phone" width="16" height="16" aria-hidden="true" />
-            {event.data.phone}
-        </Link>
-    </div>
 </section>
 
 <style>

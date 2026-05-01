@@ -1,168 +1,279 @@
----
-name: Soft Celebration
-colors:
-  surface: '#f8faf6'
-  surface-dim: '#d9dad7'
-  surface-bright: '#f8faf6'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f2f4f1'
-  surface-container: '#edeeeb'
-  surface-container-high: '#e7e9e5'
-  surface-container-highest: '#e1e3e0'
-  on-surface: '#191c1a'
-  on-surface-variant: '#424841'
-  inverse-surface: '#2e312f'
-  inverse-on-surface: '#f0f1ee'
-  outline: '#727971'
-  outline-variant: '#c2c8bf'
-  surface-tint: '#456648'
-  primary: '#426446'
-  on-primary: '#ffffff'
-  primary-container: '#5a7d5d'
-  on-primary-container: '#f7fff2'
-  inverse-primary: '#abd0ab'
-  secondary: '#5e5e5c'
-  on-secondary: '#ffffff'
-  secondary-container: '#e1dfdc'
-  on-secondary-container: '#636360'
-  tertiary: '#8c4a31'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#a96247'
-  on-tertiary-container: '#fffbff'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#c6ecc6'
-  primary-fixed-dim: '#abd0ab'
-  on-primary-fixed: '#01210a'
-  on-primary-fixed-variant: '#2d4e32'
-  secondary-fixed: '#e4e2de'
-  secondary-fixed-dim: '#c8c6c3'
-  on-secondary-fixed: '#1b1c1a'
-  on-secondary-fixed-variant: '#474744'
-  tertiary-fixed: '#ffdbcf'
-  tertiary-fixed-dim: '#ffb59a'
-  on-tertiary-fixed: '#380d00'
-  on-tertiary-fixed-variant: '#72361e'
-  background: '#f8faf6'
-  on-background: '#191c1a'
-  surface-variant: '#e1e3e0'
-typography:
-  headline-xl:
-    fontFamily: Noto Serif
-    fontSize: 40px
-    fontWeight: '600'
-    lineHeight: '1.2'
-  headline-lg:
-    fontFamily: Noto Serif
-    fontSize: 32px
-    fontWeight: '500'
-    lineHeight: '1.3'
-  headline-md:
-    fontFamily: Noto Serif
-    fontSize: 24px
-    fontWeight: '500'
-    lineHeight: '1.4'
-  body-lg:
-    fontFamily: Inter
-    fontSize: 18px
-    fontWeight: '400'
-    lineHeight: '1.6'
-  body-md:
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: '1.6'
-  label-caps:
-    fontFamily: Inter
-    fontSize: 12px
-    fontWeight: '600'
-    lineHeight: '1.2'
-    letterSpacing: 0.05em
-  button-text:
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: '600'
-    lineHeight: '1'
-rounded:
-  sm: 0.25rem
-  DEFAULT: 0.5rem
-  md: 0.75rem
-  lg: 1rem
-  xl: 1.5rem
-  full: 9999px
-spacing:
-  unit: 4px
-  container-margin: 20px
-  gutter: 16px
-  stack-sm: 8px
-  stack-md: 24px
-  stack-lg: 48px
----
+# Soft Celebration — Style Reference
+> Nurtured Joy — a calming, welcoming space that evokes feelings of preparation, warmth, and quiet celebration, bathed in soft sage and warm cream light.
 
-## Brand & Style
+**Theme:** light
 
-This design system centers on the concept of "Nurtured Joy." It is designed to evoke feelings of calm, preparation, and warmth, tailored specifically for expectant parents and their loved ones. The target audience values intentionality and high-quality aesthetics but requires a friction-less mobile experience to manage event details on the go.
+Soft Celebration feels like a peaceful Sunday morning in a sunlit nursery — breathable, quiet, and intentional. The design prioritizes clarity and a friction-less experience, wrapping functional elegance in an organic, tactile aesthetic. The visual language relies heavily on the interplay between the editorial timelessness of Noto Serif for headlines and the utilitarian precision of Inter for body text. Surfaces are soft and low-contrast, utilizing a warm cream canvas rather than stark white to reduce eye strain. Depth is achieved not through heavy shadows, but through tonal layers and delicate, light-sage outlines. The design avoids sharp corners, opting for medium-rounded shapes that feel safe, approachable, and human.
 
-The style is **Minimalist** with a organic, tactile edge. It prioritizes clarity and breathability, using ample whitespace to reduce cognitive load. By combining the timelessness of editorial serif typography with the functional precision of a modern sans-serif, the system balances the emotional significance of a baby shower with the practical needs of a high-conversion digital platform.
+## Tokens — Colors
 
-## Colors
+| Name | Value | Token | Role |
+|------|-------|-------|------|
+| Primary Sage | `#6b8e6d` | `--color-primary-sage` | Primary brand anchor — used for primary actions, selected states, and key brand moments. Conveys growth and calm. |
+| Sage Dark | `#426446` | `--color-sage-dark` | High-contrast text on light backgrounds, strong accents. |
+| Sage Tint | `#c6ecc6` | `--color-sage-tint` | Subtle backgrounds for active states, chips, or elevated cards. |
+| Warm Cream | `#fdfbf7` | `--color-warm-cream` | Base canvas and surface background. A softer, premium alternative to pure white. |
+| Pure White | `#ffffff` | `--color-pure-white` | Elevated card surfaces and text on dark backgrounds. |
+| Gentle Terracotta | `#cd7f62` | `--color-gentle-terracotta` | High-conversion accent — used sparingly for "RSVP" or "Register Now" to draw the eye without breaking the peaceful aesthetic. |
+| Terracotta Dark | `#8c4a31` | `--color-terracotta-dark` | Text or icons requiring higher contrast within the warm spectrum. |
+| Deep Charcoal | `#2d302e` | `--color-deep-charcoal` | Primary body text and headings. Ensures WCAG 2.1 AA contrast against cream backgrounds. |
+| Soft Outline | `#e2e8e2` | `--color-soft-outline` | 1px solid borders for cards and inputs, defining boundaries without relying on shadows. |
+| Muted Grey | `#5e5e5c` | `--color-muted-grey` | Secondary text, inactive states, and subtle UI elements. |
 
-The palette is rooted in nature and warmth. The **Soft Sage Green** serves as the primary brand anchor, used for primary actions and key brand moments. The **Warm Cream** acts as the foundation for all surfaces, providing a softer, more premium alternative to pure white that reduces eye strain. 
+## Tokens — Typography
 
-The **Gentle Terracotta** is used sparingly as an accent color for high-conversion elements like "Register Now" or "RSVP" to draw the eye without breaking the peaceful aesthetic. For accessibility, the **Deep Neutral** (Charcoal) ensures all text surpasses WCAG 2.1 AA contrast requirements against the cream background.
+### Noto Serif — Editorial headlines and titles. Conveys the importance and timelessness of the life event, adding a premium, traditional touch. · `--font-noto-serif`
+- **Substitute:** Merriweather or Lora
+- **Weights:** 500, 600
+- **Sizes:** 24px, 32px, 40px
+- **Line height:** 1.20–1.40
+- **Letter spacing:** normal
+- **Role:** Editorial headlines and titles. Conveys the importance and timelessness of the life event, adding a premium, traditional touch.
 
-- **Primary (Sage):** #6B8E6D (Growth, Calm)
-- **Secondary (Cream):** #FDFBF7 (Softness, Light)
-- **Tertiary (Terracotta):** #CD7F62 (Warmth, Energy)
-- **Neutral (Charcoal):** #2D302E (Clarity, Contrast)
+### Inter — Functional body text, navigation, and UI elements. Ensures maximum legibility on mobile devices and provides a crisp, modern counterpoint to the serif. · `--font-inter`
+- **Substitute:** Roboto or Helvetica Neue
+- **Weights:** 400, 600
+- **Sizes:** 12px, 16px, 18px
+- **Line height:** 1.00–1.60
+- **Letter spacing:** normal (0.05em for caps)
+- **Role:** Functional body text, navigation, and UI elements. Ensures maximum legibility on mobile devices and provides a crisp, modern counterpoint to the serif.
 
-## Typography
+### Type Scale
 
-This design system utilizes a high-contrast typographic pairing to establish hierarchy. **Noto Serif** provides an editorial, premium feel for headlines, reflecting the importance of the life event. **Inter** is utilized for all functional text, ensuring maximum legibility on mobile devices across various screen sizes.
+| Role | Size | Line Height | Letter Spacing | Token |
+|------|------|-------------|----------------|-------|
+| label-caps | 12px | 1.2 | 0.05em | `--text-label-caps` |
+| body-md | 16px | 1.6 | normal | `--text-body-md` |
+| button-text| 16px | 1.0 | normal | `--text-button` |
+| body-lg | 18px | 1.6 | normal | `--text-body-lg` |
+| heading-md | 24px | 1.4 | normal | `--text-heading-md` |
+| heading-lg | 32px | 1.3 | normal | `--text-heading-lg` |
+| heading-xl | 40px | 1.2 | normal | `--text-heading-xl` |
 
-Body text is set with generous line heights (1.6) to improve readability for users who may be multi-tasking. Label styles use subtle letter spacing and increased weight to differentiate them from body copy without requiring larger sizes.
+## Tokens — Spacing & Shapes
 
-## Layout & Spacing
+**Base unit:** 4px
 
-The system employs a **Fluid Grid** model optimized for mobile-first consumption. On mobile devices, a 4-column grid with 20px outer margins is the standard. As the viewport expands to tablet and desktop, the system scales to a 12-column grid with a maximum container width of 1140px.
+**Density:** comfortable, breathable
 
-Vertical rhythm is maintained using a 4px base unit. Component spacing follows a "Stack" pattern:
-- **Small (8px):** Internal component padding (e.g., label to input).
-- **Medium (24px):** Standard spacing between related elements in a card or section.
-- **Large (48px):** Clear separation between major content blocks to maintain the minimalist feel.
+### Spacing Scale
 
-## Elevation & Depth
+| Name | Value | Token |
+|------|-------|-------|
+| unit | 4px | `--spacing-unit` |
+| stack-sm | 8px | `--spacing-stack-sm` |
+| gutter | 16px | `--spacing-gutter` |
+| container-margin| 20px | `--spacing-container-margin` |
+| stack-md | 24px | `--spacing-stack-md` |
+| stack-lg | 48px | `--spacing-stack-lg` |
 
-To maintain a soft and approachable feel, this design system avoids heavy shadows. Depth is communicated primarily through **Tonal Layers** and **Low-Contrast Outlines**.
+### Border Radius
 
-- **Surface Tiers:** The base background is the Warm Cream. Cards and containers use a pure white background or a very subtle Sage tint to indicate elevation.
-- **Borders:** Instead of shadows, use 1px solid strokes in a lightened version of the Sage color (#E2E8E2) to define boundaries.
-- **Active States:** Subtle, diffused ambient shadows (4% opacity Charcoal) are reserved only for floating action buttons or active modal states to provide a tactile "pressed" or "lifted" feel.
+| Element | Value | Token |
+|---------|-------|-------|
+| sm | 4px (0.25rem) | `--radius-sm` |
+| default | 8px (0.5rem) | `--radius-default` |
+| md | 12px (0.75rem) | `--radius-md` |
+| lg | 16px (1rem) | `--radius-lg` |
+| xl | 24px (1.5rem) | `--radius-xl` |
+| full | 9999px | `--radius-full` |
 
-## Shapes
+### Layout
 
-The shape language is defined by a "Medium Rounded" philosophy. Sharp corners are avoided to ensure the UI feels safe and welcoming.
-
-- **Standard Elements:** Buttons, input fields, and small cards use a 0.5rem (8px) radius.
-- **Large Containers:** Section containers and large imagery containers use 1rem (16px) to 1.5rem (24px) radius to emphasize the "Soft" brand pillar.
-- **Icons:** Use rounded caps and joins to match the curvature of the UI components.
+- **Mobile Grid:** 4-column grid with 20px outer margins.
+- **Desktop Grid:** 12-column grid, max container width 1140px.
+- **Section Gap:** 48px (stack-lg) to maintain a minimalist, breathable feel.
 
 ## Components
 
-### Buttons
-Primary buttons use the Sage Green background with white text. Secondary buttons use a Sage outline with Sage text. The "Conversion" button (Terracotta) is reserved for the primary "Call to Action" on any given page (e.g., "Send Invites").
+### Primary Sage Button
+**Role:** Standard primary actions.
+Background Primary Sage (`#6b8e6d`), text Pure White (`#ffffff`), border-radius 8px. Text in Inter 600, 16px.
 
-### Input Fields
-Inputs are styled with a Cream-white background and a 1px Sage-tinted border. On focus, the border thickens to 2px in Primary Sage. Labels always sit above the field for accessibility.
+### Terracotta Conversion Button
+**Role:** Primary "Call to Action" on a page (e.g., "Send Invites", "RSVP").
+Background Gentle Terracotta (`#cd7f62`), text Pure White (`#ffffff`), border-radius 8px. Used sparingly to draw the eye.
 
-### Cards
-Cards are the primary content vessel. They use a white background, 16px padding, and a 1px light-sage border. Do not use shadows; rely on the border and the Cream background contrast to define the card area.
+### Secondary Outline Button
+**Role:** Secondary actions.
+Background transparent, border 1px solid Primary Sage (`#6b8e6d`), text Primary Sage. Border-radius 8px.
 
-### Chips & Tags
-Used for guest categories or registry filters. Chips should have a 100px (pill) radius and use a light Sage wash with dark text for the "unselected" state, and solid Sage for the "selected" state.
+### Content Card
+**Role:** Primary content vessel.
+Background Pure White (`#ffffff`), padding 16px, border 1px solid Soft Outline (`#e2e8e2`). Border-radius 16px. No shadows. Relies on the Cream canvas background for contrast.
 
-### Additional Elements
-- **Progress Steppers:** Use a soft Sage line with Noto Serif numbering for the multi-step invitation or registry process.
-- **Date Pickers:** Should emphasize touch-targets for mobile users, using the Terracotta accent for the "selected" date.
+### Input Field
+**Role:** Form entry.
+Background Warm Cream (`#fdfbf7`), border 1px solid Soft Outline (`#e2e8e2`). On focus, border thickens to 2px Primary Sage. Labels sit above the field in Inter, 12px, ALL CAPS (label-caps). Border-radius 8px.
+
+### Filter Chip / Category Tag
+**Role:** Guest categories or registry filters.
+Border-radius 100px (pill). Unselected: Sage Tint (`#c6ecc6`) background with Sage Dark text. Selected: Solid Primary Sage background with Pure White text.
+
+## Do's and Don'ts
+
+### Do
+- Use Warm Cream (`#fdfbf7`) as the primary canvas to reduce eye strain and provide a softer, premium aesthetic.
+- Define depth and elevation through tonal layers and 1px Soft Outline (`#e2e8e2`) borders, rather than drop shadows.
+- Employ Noto Serif for all headings to establish an editorial, timeless feel appropriate for a life event.
+- Use Inter with generous line-heights (1.6) for body text to ensure maximum legibility, especially for mobile users.
+- Reserve Gentle Terracotta strictly for high-conversion actions (e.g., RSVP) to make them pop without overwhelming the calming palette.
+- Maintain ample whitespace (48px between major blocks) to reduce cognitive load and enhance the minimalist feel.
+
+### Don't
+- Do not use heavy drop shadows on cards or buttons; this breaks the soft, tactile design philosophy. Use subtle, diffused ambient shadows (e.g., 4% opacity Charcoal) ONLY for active modal states or floating action buttons if absolutely necessary.
+- Avoid sharp corners (0px radius) on interactive elements and containers; always use a minimum of 4px, standardizing on 8px for buttons and inputs, to keep the UI welcoming.
+- Do not overuse the Terracotta accent color; its power lies in its scarcity.
+- Never set body text in Noto Serif; reserve it exclusively for headings to maintain a clear typographic hierarchy.
+- Do not use stark, pure white (`#ffffff`) as the main page background; always use Warm Cream.
+
+## Surfaces
+
+| Level | Name | Value | Purpose |
+|-------|------|-------|---------|
+| 0 | Warm Cream Canvas | `#fdfbf7` | Base page background — soft and inviting |
+| 1 | Pure White | `#ffffff` | Elevated card surfaces — creates subtle contrast against the cream canvas |
+| 2 | Sage Tint | `#c6ecc6` | Background for subtle highlights, chips, or secondary active states |
+
+## Elevation
+
+- **Standard Elements:** Flat with 1px solid Soft Outline (`#e2e8e2`).
+- **Active / Floating States:** `rgba(45, 48, 46, 0.04) 0px 4px 12px` (Deep Charcoal at 4% opacity) — used extremely sparingly.
+
+## Imagery
+
+Imagery should focus on warm, natural lighting, candid moments, and soft textures (e.g., linen, wood, flora). Avoid harsh, highly saturated, or overly staged stock photography. Images should ideally have slightly rounded corners (16px to 24px) to blend with the soft UI shapes.
+
+## Layout
+
+The layout is fluid and mobile-first, designed for easy, frictionless consumption on the go. The UI centers around a 4-column mobile grid with generous 20px outer margins. On larger screens, it expands to a 12-column grid capped at 1140px wide. Vertical spacing is ample, utilizing 48px gaps between major sections to let the content breathe. The overall flow should feel unhurried and structured, guiding the user gently from the editorial hero section down to the practical RSVP and registry details.
+
+## Agent Prompt Guide
+
+**Quick Color Reference**
+- text (primary heading): #2d302e
+- text (body): #2d302e
+- background (canvas): #fdfbf7
+- border (structural): #e2e8e2
+- primary action: #6b8e6d
+- conversion action: #cd7f62
+
+**Example Component Prompts**
+
+1. **Hero Section**: Warm Cream (`#fdfbf7`) background. Centered Noto Serif headline at 40px, color Deep Charcoal (`#2d302e`), line-height 1.2. Below it, body text at 18px Inter color Deep Charcoal. Primary Sage (`#6b8e6d`) button with Pure White text, 8px border-radius.
+2. **Content Card**: Pure White (`#ffffff`) background, border 1px solid Soft Outline (`#e2e8e2`), border-radius 16px, padding 16px. No box shadow. Inside: Noto Serif heading at 24px.
+3. **RSVP Section**: Prominent section with a Gentle Terracotta (`#cd7f62`) Call to Action button (Pure White text, 8px radius) to draw attention against the Warm Cream canvas.
+
+## Quick Start
+
+### CSS Custom Properties
+
+```css
+:root {
+  /* Colors */
+  --color-primary-sage: #6b8e6d;
+  --color-sage-dark: #426446;
+  --color-sage-tint: #c6ecc6;
+  --color-warm-cream: #fdfbf7;
+  --color-pure-white: #ffffff;
+  --color-gentle-terracotta: #cd7f62;
+  --color-terracotta-dark: #8c4a31;
+  --color-deep-charcoal: #2d302e;
+  --color-soft-outline: #e2e8e2;
+  --color-muted-grey: #5e5e5c;
+
+  /* Typography — Font Families */
+  --font-noto-serif: 'Noto Serif', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-label-caps: 12px;
+  --leading-label-caps: 1.2;
+  --tracking-label-caps: 0.05em;
+  --text-body-md: 16px;
+  --leading-body-md: 1.6;
+  --text-button: 16px;
+  --leading-button: 1.0;
+  --text-body-lg: 18px;
+  --leading-body-lg: 1.6;
+  --text-heading-md: 24px;
+  --leading-heading-md: 1.4;
+  --text-heading-lg: 32px;
+  --leading-heading-lg: 1.3;
+  --text-heading-xl: 40px;
+  --leading-heading-xl: 1.2;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Spacing */
+  --spacing-unit: 4px;
+  --spacing-stack-sm: 8px;
+  --spacing-gutter: 16px;
+  --spacing-container-margin: 20px;
+  --spacing-stack-md: 24px;
+  --spacing-stack-lg: 48px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-default: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Surfaces */
+  --surface-warm-cream: #fdfbf7;
+  --surface-pure-white: #ffffff;
+  --surface-sage-tint: #c6ecc6;
+}
+```
+
+### Tailwind v4
+
+```css
+@theme {
+  /* Colors */
+  --color-primary-sage: #6b8e6d;
+  --color-sage-dark: #426446;
+  --color-sage-tint: #c6ecc6;
+  --color-warm-cream: #fdfbf7;
+  --color-pure-white: #ffffff;
+  --color-gentle-terracotta: #cd7f62;
+  --color-terracotta-dark: #8c4a31;
+  --color-deep-charcoal: #2d302e;
+  --color-soft-outline: #e2e8e2;
+  --color-muted-grey: #5e5e5c;
+
+  /* Typography */
+  --font-noto-serif: 'Noto Serif', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-label-caps: 12px;
+  --text-body-md: 16px;
+  --text-button: 16px;
+  --text-body-lg: 18px;
+  --text-heading-md: 24px;
+  --text-heading-lg: 32px;
+  --text-heading-xl: 40px;
+
+  /* Spacing */
+  --spacing-unit: 4px;
+  --spacing-stack-sm: 8px;
+  --spacing-gutter: 16px;
+  --spacing-container-margin: 20px;
+  --spacing-stack-md: 24px;
+  --spacing-stack-lg: 48px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-default: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+```

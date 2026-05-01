@@ -1,29 +1,25 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'outline';
-  type?: 'button' | 'submit' | 'reset';
+  variant?: "primary" | "secondary" | "tertiary" | "outline";
+  type?: "button" | "submit" | "reset";
   class?: string;
   id?: string;
   [key: string]: any;
 }
 
-const { 
-  variant = 'primary', 
-  type = 'button', 
+const {
+  variant = "primary",
+  type = "button",
   class: className,
   id,
-  ...rest 
+  ...rest
 } = Astro.props;
 ---
 
 <button
   type={type}
   id={id}
-  class:list={[
-    'pill-button',
-    `pill-button--${variant}`,
-    className
-  ]}
+  class:list={["pill-button", `pill-button--${variant}`, className]}
   {...rest}
 >
   <slot />

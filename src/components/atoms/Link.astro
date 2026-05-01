@@ -1,34 +1,39 @@
 ---
 interface Props {
   href: string;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'plain';
+  variant?: "primary" | "secondary" | "tertiary" | "outline" | "plain";
   class?: string;
   target?: string;
   rel?: string;
   [key: string]: any;
 }
 
-const { 
-  href, 
-  variant = 'plain', 
+const {
+  href,
+  variant = "plain",
   class: className,
   target,
   rel,
-  ...rest 
+  ...rest
 } = Astro.props;
 
-const isButtonVariant = ['primary', 'secondary', 'tertiary', 'outline'].includes(variant);
+const isButtonVariant = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "outline",
+].includes(variant);
 ---
 
 <a
   href={href}
   class:list={[
-    isButtonVariant ? 'pill-button' : '',
-    isButtonVariant ? `pill-button--${variant}` : '',
-    className
+    isButtonVariant ? "pill-button" : "",
+    isButtonVariant ? `pill-button--${variant}` : "",
+    className,
   ]}
   target={target}
-  rel={target === '_blank' && !rel ? 'noopener noreferrer' : rel}
+  rel={target === "_blank" && !rel ? "noopener noreferrer" : rel}
   {...rest}
 >
   <slot />

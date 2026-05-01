@@ -1,50 +1,62 @@
 ---
 import event from "@data/event.json";
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
+import Link from "../atoms/Link.astro";
 ---
 
 <section class="info section animate-on-scroll" id="info">
   <h2 class="info__title text-headline-md">Detalles</h2>
 
   <div class="info__items">
-    {event.dressCode && (
-      <div class="info__item">
-        <div class="info__icon">
-          <Icon name="dress-code" width="20" height="20" aria-hidden="true" />
+    {
+      event.dressCode && (
+        <div class="info__item">
+          <div class="info__icon">
+            <Icon name="dress-code" width="20" height="20" aria-hidden="true" />
+          </div>
+          <div class="info__text">
+            <span class="info__label text-label">Código de Vestimenta</span>
+            <span class="info__value">{event.dressCode}</span>
+          </div>
         </div>
-        <div class="info__text">
-          <span class="info__label text-label">Código de Vestimenta</span>
-          <span class="info__value">{event.dressCode}</span>
-        </div>
-      </div>
-    )}
+      )
+    }
 
-    {event.kidsAllowed !== undefined && (
-      <div class="info__item">
-        <div class="info__icon">
-          <Icon name="kids" width="20" height="20" aria-hidden="true" />
+    {
+      event.kidsAllowed !== undefined && (
+        <div class="info__item">
+          <div class="info__icon">
+            <Icon name="kids" width="20" height="20" aria-hidden="true" />
+          </div>
+          <div class="info__text">
+            <span class="info__label text-label">Niños</span>
+            <span class="info__value">
+              {event.kidsAllowed
+                ? "¡Los pequeños son bienvenidos!"
+                : "Solo adultos, por favor"}
+            </span>
+          </div>
         </div>
-        <div class="info__text">
-          <span class="info__label text-label">Niños</span>
-          <span class="info__value">{event.kidsAllowed ? '¡Los pequeños son bienvenidos!' : 'Solo adultos, por favor'}</span>
-        </div>
-      </div>
-    )}
+      )
+    }
 
-    {event.registryUrl && (
-      <div class="info__item">
-        <div class="info__icon">
-          <Icon name="registry" width="20" height="20" aria-hidden="true" />
-        </div>
-        <div class="info__text">
-          <span class="info__label text-label">Mesa de Regalos</span>
-          <a href={event.registryUrl} target="_blank" rel="noopener noreferrer" class="info__link">
-            {event.registryName}
-            <Icon name="external-link" width="12" height="12" aria-hidden="true" />
-          </a>
-        </div>
+    <div class="info__item">
+      <div class="info__icon">
+        <Icon name="registry" width="20" height="20" aria-hidden="true" />
       </div>
-    )}
+      <div class="info__text">
+        <span class="info__label text-label">Mesa de Regalos</span>
+        <Link href="/mesa-de-regalos" class="info__link">
+          Sugerencias y Detalles (Opcionales)
+          <Icon
+            name="external-link"
+            width="12"
+            height="12"
+            aria-hidden="true"
+          />
+        </Link>
+      </div>
+    </div>
   </div>
 </section>
 

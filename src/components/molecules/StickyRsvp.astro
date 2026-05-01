@@ -3,41 +3,43 @@ import Link from "@atoms/Link.astro";
 ---
 
 <div class="sticky-rsvp" id="sticky-rsvp" aria-hidden="true">
-  <Link 
-    href="#rsvp" 
-    variant="primary" 
-    class="sticky-rsvp__btn"
-  >
+  <Link href="#rsvp" variant="primary" class="sticky-rsvp__btn">
     Confirmar Asistencia
   </Link>
 </div>
 
 <script>
-  const sticky = document.getElementById('sticky-rsvp')!;
-  const hero = document.getElementById('hero');
-  const rsvp = document.getElementById('rsvp');
+  const sticky = document.getElementById("sticky-rsvp")!;
+  const hero = document.getElementById("hero");
+  const rsvp = document.getElementById("rsvp");
 
   let heroVisible = true;
   let rsvpVisible = false;
 
   function updateVisibility() {
     const show = !heroVisible && !rsvpVisible;
-    sticky.classList.toggle('sticky-rsvp--visible', show);
-    sticky.setAttribute('aria-hidden', String(!show));
+    sticky.classList.toggle("sticky-rsvp--visible", show);
+    sticky.setAttribute("aria-hidden", String(!show));
   }
 
   if (hero) {
-    new IntersectionObserver(([e]) => {
-      heroVisible = e.isIntersecting;
-      updateVisibility();
-    }, { threshold: 0.3 }).observe(hero);
+    new IntersectionObserver(
+      ([e]) => {
+        heroVisible = e.isIntersecting;
+        updateVisibility();
+      },
+      { threshold: 0.3 },
+    ).observe(hero);
   }
 
   if (rsvp) {
-    new IntersectionObserver(([e]) => {
-      rsvpVisible = e.isIntersecting;
-      updateVisibility();
-    }, { threshold: 0.2 }).observe(rsvp);
+    new IntersectionObserver(
+      ([e]) => {
+        rsvpVisible = e.isIntersecting;
+        updateVisibility();
+      },
+      { threshold: 0.2 },
+    ).observe(rsvp);
   }
 </script>
 
@@ -57,7 +59,9 @@ import Link from "@atoms/Link.astro";
     -webkit-backdrop-filter: blur(12px);
     transform: translateY(100%);
     opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease;
     pointer-events: none;
   }
 

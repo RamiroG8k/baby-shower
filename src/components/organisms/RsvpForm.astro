@@ -4,6 +4,8 @@ import event from "@data/event.json";
 import { Icon } from "astro-icon/components";
 import Button from "@/components/atoms/Button.astro";
 import Input from "@/components/atoms/Input.astro";
+import Headline from "@/components/atoms/Headline.astro";
+import Text from "@/components/atoms/Text.astro";
 const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
   month: "long",
   day: "numeric",
@@ -12,7 +14,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
 ---
 
 <section class="rsvp section animate-on-scroll" id="rsvp">
-  <h2 class="rsvp__title text-headline-md">¿Nos acompañarás?</h2>
+  <Headline as="h2" variant="md" class="rsvp__title">¿Nos acompañarás?</Headline>
 
   <div class="rsvp__card card" id="rsvp-card">
     <div class="rsvp__step rsvp__step--choice" id="rsvp-step-choice">
@@ -30,7 +32,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
       <input type="hidden" name="response" id="rsvp-response" value="" />
 
       <div class="rsvp__field">
-        <label for="rsvp-name" class="text-label">Tu Nombre</label>
+        <Text as="label" variant="label" class="rsvp__field-label" for="rsvp-name">Tu Nombre</Text>
         <Input
           type="text"
           id="rsvp-name"
@@ -41,7 +43,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
       </div>
 
       <div class="rsvp__field" id="rsvp-guests-field">
-        <label for="rsvp-guests" class="text-label">Número de Invitados</label>
+        <Text as="label" variant="label" class="rsvp__field-label" for="rsvp-guests">Número de Invitados</Text>
         <div class="rsvp__stepper">
           <button
             type="button"
@@ -73,11 +75,9 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
       </div>
 
       <div class="rsvp__field" id="rsvp-dietary-field">
-        <label for="rsvp-dietary" class="text-label"
-          >Restricciones Alimenticias <span class="rsvp__optional"
-            >(opcional)</span
-          ></label
-        >
+        <Text as="label" variant="label" class="rsvp__field-label" for="rsvp-dietary">
+          Restricciones Alimenticias <span class="rsvp__optional">(opcional)</span>
+        </Text>
         <Input
           type="textarea"
           id="rsvp-dietary"
@@ -104,25 +104,25 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
       <div class="rsvp__check">
         <Icon name="check-success" width="48" height="48" />
       </div>
-      <p class="rsvp__confirm-text text-headline-md" id="rsvp-confirm-msg">
+      <Headline as="p" variant="md" class="rsvp__confirm-text" id="rsvp-confirm-msg">
         ¡Gracias!
-      </p>
-      <p class="rsvp__confirm-sub text-body-md" id="rsvp-confirm-sub"></p>
+      </Headline>
+      <Text as="p" variant="body-md" class="rsvp__confirm-sub" id="rsvp-confirm-sub"></Text>
       <button type="button" class="rsvp__edit-btn" id="rsvp-edit"
         >Editar respuesta</button
       >
     </div>
 
     <div class="rsvp__error" id="rsvp-error" style="display:none;">
-      <p class="text-body-md">
+      <Text as="p" variant="body-md">
         Algo salió mal. Por favor intenta de nuevo o contáctanos directamente.
-      </p>
+      </Text>
     </div>
   </div>
 
-  <p class="rsvp__deadline text-body-md animate-on-scroll delay-1">
+  <Text as="p" variant="body-md" class="rsvp__deadline animate-on-scroll delay-1">
     Por favor confirma tu asistencia antes del <strong>{deadlineDate}</strong>
-  </p>
+  </Text>
 </section>
 
 <script>
@@ -252,7 +252,7 @@ const deadlineDate = new Date(event.rsvpDeadline).toLocaleDateString("es-MX", {
     text-align: left;
   }
 
-  .rsvp__field .text-label {
+  .rsvp__field-label {
     color: var(--on-surface-variant);
     padding-left: var(--space-sm);
   }

@@ -1,148 +1,170 @@
 ---
 import event from "@data/event.json";
 import { Icon } from "astro-icon/components";
+import Text from "@atoms/Text.astro";
 import Link from "@atoms/Link.astro";
+import Headline from "@atoms/Headline.astro";
+import Button from "@atoms/Button.astro";
 
 const dateObj = new Date(event.date);
 const monthName = dateObj.toLocaleDateString("es-MX", { month: "long" });
 const dayNumber = dateObj.getUTCDate();
 const year = dateObj.getUTCFullYear();
+
+const encodedAddress = encodeURIComponent(event.address);
+const webMapUrl = `https://maps.app.goo.gl/ascGdTDtsJxT5aSi8`;
+const iOSMapUrl = `https://maps.apple.com/?daddr=${encodedAddress}`;
+const androidMapUrl = `geo:0,0?q=${encodedAddress}`;
+
+const isIOS =
+    Astro.request.headers.get("user-agent")?.includes("iPhone") ||
+    Astro.request.headers.get("user-agent")?.includes("iPad");
+const mapLinkUrl = isIOS ? iOSMapUrl : androidMapUrl;
 ---
 
 <section class="details section" id="details">
-  <div class="details__botanical animate-on-scroll">
-    <Icon name="botanical" class="botanical" />
-  </div>
+    <div class="details__grid animate-on-scroll delay-1">
+        <div class="details__block">
+            <Text as="span" variant="label" class="details__label"
+                >{event.dayOfWeek}</Text
+            >
+            <span class="details__day">{dayNumber}</span>
+            <span class="details__sub">{monthName} {year}</span>
+        </div>
 
-  <div class="details__grid animate-on-scroll delay-1">
-    <div class="details__block">
-      <span class="details__label text-label">{event.dayOfWeek}</span>
-      <span class="details__day">{dayNumber}</span>
-      <span class="details__sub">{monthName} {year}</span>
+        <div class="details__vdivider" aria-hidden="true"></div>
+
+        <div class="details__block">
+            <Text as="span" variant="label" class="details__label">Hora</Text>
+            <span class="details__time">{event.startTime}</span>
+            {
+                event.endTime && (
+                    <span class="details__sub">a {event.endTime}</span>
+                )
+            }
+        </div>
     </div>
 
-    <div class="details__vdivider" aria-hidden="true"></div>
-
-    <div class="details__block">
-      <span class="details__label text-label">Hora</span>
-      <span class="details__time">{event.startTime}</span>
-      {event.endTime && <span class="details__sub">a {event.endTime}</span>}
+    <div class="details__location animate-on-scroll delay-2">
+        <div class="details__location-icon">
+            <Icon name="map-marker" width="18" height="22" aria-hidden="true" />
+        </div>
+        <Headline as="p" variant="md" class="details__venue"
+            >{event.venue}</Headline
+        >
+        <p class="details__address">{event.address}</p>
     </div>
-  </div>
-
-  <div class="details__location animate-on-scroll delay-2">
-    <div class="details__location-icon">
-      <Icon name="map-marker" width="18" height="22" aria-hidden="true" />
-    </div>
-    <p class="details__venue text-headline-md">{event.venue}</p>
-    <p class="details__address">{event.address}</p>
 
     <div style="width: 100%">
-      <iframe
-        width="100%"
-        height="500"
-        frameborder="0"
-        scrolling="no"
-        marginheight="0"
-        marginwidth="0"
-        src="https://maps.google.com/maps?width=100%25&height=500&hl=en&q=Priv.%20Pino%20Suarez%2056,%20Zapopan,%2045100%20Zapopan,%20Jal.+(Baby%20Shower)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
-      ></iframe>
+        <iframe
+            width="100%"
+            height="500"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=100%25&height=500&hl=en&q=Priv.%20Pino%20Suarez%2056,%20Zapopan,%2045100%20Zapopan,%20Jal.+(Baby%20Shower)&t=&z=15&ie=UTF8&iwloc=B&output=embed"
+        ></iframe>
     </div>
 
-    <Link
-      href={event.mapUrl}
-      target="_blank"
-      variant="secondary"
-      class="details__map-link"
+    <Button
+        client:load
+        class="details__map-btn"
+        data-map-link={mapLinkUrl}
+        data-web-link={webMapUrl}
+        onclick={`
+                const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+                const link = isMobile ? this.dataset.mapLink : this.dataset.webLink;
+                window.open(link, isMobile ? '_self' : '_blank');
+            `}
     >
-      <Icon name="map" width="14" height="14" aria-hidden="true" />
-      Ver en el Mapa
-    </Link>
-  </div>
+        <Icon name="map" width="14" height="14" aria-hidden="true" />
+        Abrir en Maps
+    </Button>
 </section>
 
 <style>
-  .details {
-    text-align: center;
-    padding-top: var(--space-lg);
-  }
+    .details {
+        text-align: center;
+        padding-top: var(--space-lg);
+    }
 
-  .details__botanical {
-    margin-bottom: var(--space-xl);
-  }
+    .details__botanical {
+        margin-bottom: var(--space-xl);
+    }
 
-  .details__grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xl);
-    margin-bottom: var(--space-2xl);
-  }
+    .details__grid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-xl);
+        margin-bottom: var(--space-2xl);
+    }
 
-  .details__block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-xs);
-  }
+    .details__block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xs);
+    }
 
-  .details__label {
-    color: var(--outline);
-  }
+    .details__label {
+        color: var(--outline);
+    }
 
-  .details__day {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 10vw, 4.5rem);
-    font-weight: 400;
-    line-height: 1;
-    color: var(--on-surface);
-  }
+    .details__day {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 10vw, 4.5rem);
+        font-weight: 400;
+        line-height: 1;
+        color: var(--on-surface);
+    }
 
-  .details__time {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    font-weight: 400;
-    line-height: 1;
-    color: var(--on-surface);
-  }
+    .details__time {
+        font-family: var(--font-display);
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        font-weight: 400;
+        line-height: 1;
+        color: var(--on-surface);
+    }
 
-  .details__sub {
-    font-size: 13px;
-    color: var(--on-surface-variant);
-  }
+    .details__sub {
+        font-size: 13px;
+        color: var(--on-surface-variant);
+    }
 
-  .details__vdivider {
-    width: 1.5px;
-    height: 60px;
-    background: var(--outline-variant);
-    border-radius: var(--radius-full);
-  }
+    .details__vdivider {
+        width: 1.5px;
+        height: 60px;
+        background: var(--outline-variant);
+        border-radius: var(--radius-full);
+    }
 
-  .details__location {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-  }
+    .details__location {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+    }
 
-  .details__location-icon {
-    margin-bottom: var(--space-xs);
-  }
+    .details__location-icon {
+        margin-bottom: var(--space-xs);
+    }
 
-  .details__venue {
-    color: var(--on-surface);
-  }
+    .details__venue {
+        color: var(--on-surface);
+    }
 
-  .details__address {
-    font-size: 14px;
-    color: var(--on-surface-variant);
-    margin-bottom: var(--space-sm);
-  }
+    .details__address {
+        font-size: 14px;
+        color: var(--on-surface-variant);
+        margin-bottom: var(--space-sm);
+    }
 
-  .details__map-link {
-    font-size: 13px;
-    padding: var(--space-sm) var(--space-lg);
-    min-height: 40px;
-    margin-top: var(--space-xs);
-  }
+    .details__map-link {
+        font-size: 13px;
+        padding: var(--space-sm) var(--space-lg);
+        min-height: 40px;
+        margin-top: var(--space-xs);
+    }
 </style>

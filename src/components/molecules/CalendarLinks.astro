@@ -2,6 +2,7 @@
 import { Event } from "@models/Event";
 import { CalendarEvent } from "@models/CalendarEvent";
 import Link from "@atoms/Link.astro";
+import Text from "@atoms/Text.astro";
 import { Icon } from "astro-icon/components";
 
 const event = Event.getInstance();
@@ -9,63 +10,78 @@ const calendar = new CalendarEvent(event.data);
 ---
 
 <section class="calendar section animate-on-scroll" id="calendar">
-  <p class="calendar__label text-label">Reserva la Fecha</p>
+    <Text as="p" variant="label" class="calendar__label">Reserva la Fecha</Text>
 
-  <div class="calendar__links">
-    <Link
-      href={calendar.googleUrl}
-      target="_blank"
-      variant="secondary"
-      class="calendar__btn"
-    >
-      <Icon name="google-calendar" width="16" height="16" aria-hidden="true" />
-      Google
-    </Link>
+    <div class="calendar__links">
+        <Link
+            href={calendar.googleUrl}
+            target="_blank"
+            variant="secondary"
+            class="calendar__btn"
+        >
+            <Icon
+                name="google-calendar"
+                width="16"
+                height="16"
+                aria-hidden="true"
+            />
+            Google
+        </Link>
 
-    <Link
-      href={calendar.icsDataUri}
-      download={calendar.icsFilename}
-      variant="secondary"
-      class="calendar__btn"
-    >
-      <Icon name="apple-calendar" width="16" height="16" aria-hidden="true" />
-      Apple
-    </Link>
+        <Link
+            href={calendar.icsDataUri}
+            download={calendar.icsFilename}
+            variant="secondary"
+            class="calendar__btn"
+        >
+            <Icon
+                name="apple-calendar"
+                width="16"
+                height="16"
+                aria-hidden="true"
+            />
+            Apple
+        </Link>
 
-    <Link
-      href={calendar.icsDataUri}
-      download={calendar.icsFilename}
-      variant="secondary"
-      class="calendar__btn"
-    >
-      <Icon name="outlook-calendar" width="16" height="16" aria-hidden="true" />
-      Outlook
-    </Link>
-  </div>
+        <Link
+            href={calendar.icsDataUri}
+            download={calendar.icsFilename}
+            variant="secondary"
+            class="calendar__btn"
+        >
+            <Icon
+                name="outlook-calendar"
+                width="16"
+                height="16"
+                aria-hidden="true"
+            />
+            Outlook
+        </Link>
+    </div>
 </section>
 
 <style>
-  .calendar {
-    text-align: center;
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
-  }
+    .calendar {
+        text-align: center;
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+    }
 
-  .calendar__label {
-    color: var(--outline);
-    margin-bottom: var(--space-md);
-  }
+    .calendar__label {
+        color: var(--outline);
+        margin-bottom: var(--space-md);
+    }
 
-  .calendar__links {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-  }
+    .calendar__links {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+    }
 
-  .calendar__btn {
-    font-size: 13px;
-    padding: var(--space-sm) var(--space-lg);
-    min-height: 40px;
-  }
+    .calendar__btn {
+        font-size: 13px;
+        padding: var(--space-sm) var(--space-lg);
+        min-height: 40px;
+    }
 </style>

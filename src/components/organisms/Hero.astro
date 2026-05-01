@@ -1,95 +1,76 @@
 ---
 import event from "@data/event.json";
 import { Icon } from "astro-icon/components";
+import Text from "@components/atoms/Text.astro";
+import Headline from "@components/atoms/Headline.astro";
 ---
 
 <section class="hero" id="hero">
-  <div class="hero__content">
-    <div class="hero__heart" style="animation: fadeIn 1s ease 0.2s both;">
-      <Icon name="heart" class="hero__heart-icon" aria-hidden="true" />
+    <div class="hero__content">
+        <div class="hero__heart" style="animation: fadeIn 1s ease 0.2s both;">
+            <Icon name="heart" class="hero__heart-icon" aria-hidden="true" />
+        </div>
+
+        <Text style="animation: fadeUp 0.8s ease 0.3s both;">
+            {"Acompáñanos a celebrar el".toUpperCase()}
+        </Text>
+
+        <Text
+            bold
+            style="letter-spacing: 0.2em; animation: fadeUp 0.8s ease 0.5s both;"
+        >
+            {event.eventType.toUpperCase()}
+        </Text>
+
+        <Headline
+            as="h1"
+            variant="lg"
+            style="animation: fadeUp 0.8s ease 0.7s both;"
+        >
+            {event.parentName}
+        </Headline>
+
+        <Text
+            as="p"
+            variant="body-lg"
+            italic
+            weight="light"
+            style="animation: fadeUp 0.8s ease 0.9s both;"
+        >
+            {event.tagline}
+        </Text>
     </div>
-
-    <p
-      class="hero__invite text-label"
-      style="animation: fadeUp 0.8s ease 0.3s both;"
-    >
-      Acompáñanos a celebrar el
-    </p>
-
-    <p class="hero__event-type" style="animation: fadeUp 0.8s ease 0.5s both;">
-      {event.eventType.toUpperCase()}
-    </p>
-
-    <h1
-      class="hero__name text-headline-lg"
-      style="animation: fadeUp 0.8s ease 0.7s both;"
-    >
-      {event.parentName}
-    </h1>
-
-    <p
-      class="hero__tagline font-display font-italic font-light"
-      style="animation: fadeUp 0.8s ease 0.9s both;"
-    >
-      {event.tagline}
-    </p>
-  </div>
 </section>
 
 <style>
-  .hero {
-    position: relative;
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--space-3xl) var(--space-md);
-    overflow: hidden;
-  }
+    .hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: var(--space-3xl) var(--space-md);
+        overflow: hidden;
+    }
 
-  .hero__content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-xs);
-  }
+    .hero__content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xs);
+    }
 
-  .hero__heart {
-    margin-bottom: var(--space-sm);
-  }
+    .hero__heart {
+        margin-bottom: var(--space-sm);
+    }
 
-  .hero__heart-icon {
-    width: 20px;
-    height: 18px;
-    color: var(--tertiary-container);
-    opacity: 0.7;
-  }
-
-  .hero__invite {
-    color: var(--on-surface-variant);
-    margin-bottom: var(--space-xs);
-  }
-
-  .hero__event-type {
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--primary);
-    margin-bottom: var(--space-xs);
-  }
-
-  .hero__name {
-    color: var(--on-surface);
-    margin: 0;
-  }
-
-  .hero__tagline {
-    font-size: clamp(1.1rem, 3vw, 1.35rem);
-    color: var(--outline);
-    margin-top: var(--space-sm);
-  }
+    .hero__heart-icon {
+        width: 20px;
+        height: 18px;
+        color: var(--tertiary-container);
+        opacity: 0.7;
+    }
 </style>

@@ -1,0 +1,57 @@
+---
+import { Icon } from "astro-icon/components";
+import Text from "@atoms/Text.astro";
+
+interface Props {
+    icon: string;
+    label: string;
+    class?: string;
+}
+
+const { icon, label, class: className } = Astro.props;
+---
+
+<div class:list={["info-card", className]}>
+    <div class="info-card__icon">
+        <Icon name={icon} width="20" height="20" aria-hidden="true" />
+    </div>
+    <div class="info-card__content">
+        <Text as="span" variant="label" class="info-card__label">
+            {label}
+        </Text>
+        <slot />
+    </div>
+</div>
+
+<style>
+    .info-card {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-lg);
+        background: var(--surface-container-low);
+        border-radius: var(--radius-md);
+        text-align: left;
+    }
+
+    .info-card__icon {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--surface-container-lowest);
+        border-radius: 50%;
+    }
+
+    .info-card__content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .info-card__label {
+        color: var(--outline);
+    }
+</style>

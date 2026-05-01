@@ -1,7 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@organisms/Hero.astro";
-import Countdown from "@molecules/Countdown.astro";
 import EventDetails from "@organisms/EventDetails.astro";
 import RsvpForm from "@organisms/RsvpForm.astro";
 import Details from "@organisms/Details.astro";
@@ -11,27 +10,19 @@ import StickyRsvp from "@molecules/StickyRsvp.astro";
 ---
 
 <Layout>
-  <main>
-    <Hero />
+    <main>
+        <Hero />
 
-    <Countdown />
+        <EventDetails />
 
-    <div class="section-divider" aria-hidden="true"></div>
+        <RsvpForm />
 
-    <EventDetails />
+        <Details />
 
-    <RsvpForm />
+        <CalendarLinks />
 
-    <div class="section-divider" aria-hidden="true"></div>
+        <Contact />
+    </main>
 
-    <Details />
-
-    <CalendarLinks />
-
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <Contact />
-  </main>
-
-  <StickyRsvp />
+    <StickyRsvp />
 </Layout>

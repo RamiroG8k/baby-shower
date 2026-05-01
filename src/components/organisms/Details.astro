@@ -1,128 +1,82 @@
 ---
 import event from "@data/event.json";
-import { Icon } from "astro-icon/components";
 import Link from "../atoms/Link.astro";
+import Headline from "../atoms/Headline.astro";
+import InfoCard from "../molecules/InfoCard.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="info section animate-on-scroll" id="info">
-  <h2 class="info__title text-headline-md">Detalles</h2>
+    <Headline as="h2" variant="md">Detalles</Headline>
 
-  <div class="info__items">
-    {
-      event.dressCode && (
-        <div class="info__item">
-          <div class="info__icon">
-            <Icon name="dress-code" width="20" height="20" aria-hidden="true" />
-          </div>
-          <div class="info__text">
-            <span class="info__label text-label">Código de Vestimenta</span>
-            <span class="info__value">{event.dressCode}</span>
-          </div>
-        </div>
-      )
-    }
+    <hr class="separator" />
 
-    {
-      event.kidsAllowed !== undefined && (
-        <div class="info__item">
-          <div class="info__icon">
-            <Icon name="kids" width="20" height="20" aria-hidden="true" />
-          </div>
-          <div class="info__text">
-            <span class="info__label text-label">Niños</span>
-            <span class="info__value">
-              {event.kidsAllowed
-                ? "¡Los pequeños son bienvenidos!"
-                : "Solo adultos, por favor"}
-            </span>
-          </div>
-        </div>
-      )
-    }
+    <div class="info__items">
+        {
+            event.dressCode && (
+                <InfoCard icon="dress-code" label="Código de Vestimenta">
+                    <span class="info__value">{event.dressCode}</span>
+                </InfoCard>
+            )
+        }
 
-    <div class="info__item">
-      <div class="info__icon">
-        <Icon name="registry" width="20" height="20" aria-hidden="true" />
-      </div>
-      <div class="info__text">
-        <span class="info__label text-label">Mesa de Regalos</span>
-        <Link href="/mesa-de-regalos" class="info__link">
-          Sugerencias y Detalles (Opcionales)
-          <Icon
-            name="external-link"
-            width="12"
-            height="12"
-            aria-hidden="true"
-          />
-        </Link>
-      </div>
+        {
+            event.kidsAllowed !== undefined && (
+                <InfoCard icon="kids" label="Niños">
+                    <span class="info__value">
+                        {event.kidsAllowed
+                            ? "¡Los pequeños son bienvenidos!"
+                            : "Solo adultos, por favor"}
+                    </span>
+                </InfoCard>
+            )
+        }
+
+        {
+            event.registry && (
+                <InfoCard icon="registry" label="Mesa de Regalos">
+                    <Link href="/mesa-de-regalos" class="info__link">
+                        Sugerencias y Detalles (Opcionales)
+                        <Icon
+                            name="external-link"
+                            width="12"
+                            height="12"
+                            aria-hidden="true"
+                        />
+                    </Link>
+                </InfoCard>
+            )
+        }
     </div>
-  </div>
 </section>
 
 <style>
-  .info {
-    text-align: center;
-  }
+    .info {
+        text-align: center;
+    }
 
-  .info__title {
-    margin-bottom: var(--space-xl);
-    color: var(--on-surface);
-  }
+    .info__items {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
 
-  .info__items {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
+    .info__value {
+        font-size: 15px;
+        color: var(--on-surface);
+    }
 
-  .info__item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
-    background: var(--surface-container-low);
-    border-radius: var(--radius-md);
-    text-align: left;
-  }
+    .info__link {
+        font-size: 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
 
-  .info__icon {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--surface-container-lowest);
-    border-radius: 50%;
-  }
-
-  .info__text {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .info__label {
-    color: var(--outline);
-  }
-
-  .info__value {
-    font-size: 15px;
-    color: var(--on-surface);
-  }
-
-  .info__link {
-    font-size: 15px;
-    color: var(--primary);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .info__link:hover {
-    color: var(--on-primary-container);
-  }
+    .separator {
+        border: 1px solid var(--outline);
+        margin: var(--space-sm) auto;
+        opacity: 0;
+        width: 70%;
+    }
 </style>

@@ -1,0 +1,83 @@
+---
+interface Props {
+    as?: string;
+    variant?: "md" | "lg" | "xl";
+    weight?: "regular" | "medium" | "light";
+    italic?: boolean;
+    bold?: boolean;
+    class?: string;
+    style?: string;
+}
+
+const {
+    as: Tag = "h2",
+    variant = "lg",
+    weight = "regular",
+    italic = true,
+    bold = false,
+    class: className,
+    style,
+} = Astro.props;
+
+const weightMap = {
+    regular: 400,
+    medium: 500,
+    light: 300,
+};
+---
+
+<Tag
+    class:list={["headline", `headline--${variant}`, className]}
+    data-variant={variant}
+    data-italic={italic}
+    data-bold={bold}
+    data-weight={weight}
+    style={style}
+>
+    <slot />
+</Tag>
+
+<style>
+    .headline {
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        color: var(--on-surface);
+    }
+
+    .headline[data-variant="md"] {
+        font-size: var(--text-heading-md);
+        line-height: 1.3;
+    }
+
+    .headline[data-variant="lg"] {
+        font-size: var(--text-heading-lg);
+    }
+
+    .headline[data-variant="xl"] {
+        font-size: var(--text-heading-xl);
+        line-height: 1.1;
+    }
+
+    .headline[data-italic="false"] {
+        font-style: normal;
+    }
+
+    .headline[data-bold="true"] {
+        font-weight: 600;
+    }
+
+    .headline[data-weight="regular"] {
+        font-weight: 400;
+    }
+
+    .headline[data-weight="medium"] {
+        font-weight: 500;
+    }
+
+    .headline[data-weight="light"] {
+        font-weight: 300;
+    }
+</style>

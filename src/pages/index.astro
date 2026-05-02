@@ -7,22 +7,19 @@ import Details from "@organisms/Details.astro";
 import Contact from "@organisms/Contact.astro";
 import StickyRsvp from "@molecules/StickyRsvp.astro";
 import DateAndTime from "@/components/organisms/DateAndTime.astro";
+import BackgroundGingham from "@/components/molecules/BackgroundGingham.astro";
 ---
 
 <Layout>
+    <BackgroundGingham />
+
     <main>
         <Hero />
-
         <DateAndTime />
-
         <EventDetails />
-
         <Details />
-
         <RsvpForm />
-
         <Contact />
     </main>
-
     <StickyRsvp />
 </Layout>

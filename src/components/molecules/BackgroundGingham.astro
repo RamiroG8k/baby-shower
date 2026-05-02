@@ -1,0 +1,56 @@
+---
+/**
+ * BackgroundGingham Component
+ * Generates the checkered pattern seen in IMG_5077.jpeg
+ */
+---
+
+<div class="gingham-pattern">
+    <div class="white-background"></div>
+
+    <slot />
+</div>
+
+<style>
+    .gingham-pattern {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 5 / 7;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        padding: 2rem;
+        opacity: 60%;
+
+        background-color: #f4f1ea;
+        background-image:
+            linear-gradient(
+                90deg,
+                rgba(214, 208, 196, 0.5) 50%,
+                transparent 50%
+            ),
+            linear-gradient(rgba(214, 208, 196, 0.5) 50%, transparent 50%);
+        background-size: 60px 60px; /* Size of the checkered squares */
+    }
+
+    .white-background {
+        display: none;
+        position: absolute;
+        inset: 0;
+        background-color: white;
+        width: 90%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    @media screen and (min-width: 1200px) {
+        .gingham-pattern {
+            opacity: 100%;
+        }
+
+        .white-background {
+            display: block;
+        }
+    }
+</style>

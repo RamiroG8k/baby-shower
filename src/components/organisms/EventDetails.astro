@@ -5,6 +5,7 @@ import Link from "@atoms/Link.astro";
 import Headline from "@atoms/Headline.astro";
 import Card from "../atoms/Card.astro";
 import Separator from "../atoms/Separator.astro";
+import Text from "../atoms/Text.astro";
 
 const encodedAddress = encodeURIComponent(event.address);
 const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
@@ -43,6 +44,12 @@ const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr
             ></iframe>
         </div>
     </Card>
+
+    <Separator visible={false} />
+
+    <Text style="font-size: calc(var(--space-md) * 0.8)"
+        >{event.addressAdditionalInfo}</Text
+    >
 
     <Separator visible={false} />
 

@@ -1,63 +1,64 @@
 {
   "intro": "Queremos que sepas que tu presencia es el mejor regalo. Si deseas obsequiarnos algo, aquí te dejamos algunas tiendas y productos que nos han encantado - pero siéntete libre de elegir lo que prefieras.",
+  "advice": "Si decides darnos un obsequio, nos gustaria recibirlo en el evento para hacerlo parte de las dinamicas",
   "shops": [
     {
       "name": "Amazon",
       "description": "Nuestra lista principal con artículos esenciales para el bebé.",
-      "url": "https://www.amazon.com.mx/baby-reg/yourlist",
+      "url": "https://www.amazon.com.mx/s/ref=nb_sb_noss_2?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Dbaby&field-keywords=&crid=2VXE2NM1UP8ZN&sprefix=%2Cbaby%2C222",
       "image": "https://blogs.unsw.edu.au/nowideas/files/2018/03/amazon.jpg",
       "suggestions": [
         {
-          "label": "Pañalera organizadora",
-          "image": "/images/registry/products/panalera.png"
+          "label": "Mini gym",
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRHzAwKXAYB5Jfurs3vVINGaVtuPPomCXmyipKfI3YYGQdwpVw7oQG98TSSCtCdx93ggxehWB13J4amWVLd8YsdU059XNOy1NMRdGgDaJvBhlQsWHo4b6Xo8A"
         },
         {
-          "label": "Monitor de bebé",
-          "image": "/images/registry/products/monitor.png"
+          "label": "Bicicleta",
+          "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ0V48GxnT1AUGuMzM8xGKXY8adDwPpVWOaOzuJbvBIq2LP8RonSapbukkfVnVB3MQSKgoUVPePopSBe6xcYuQlqCw1Mf-LaKJX35LHOv9D08d8BRkGUiVH3g"
         },
         {
           "label": "Set de biberones",
-          "image": "/images/registry/products/biberones.png"
+          "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR380ra9LW5vAH2iSyAJKhBp1AXtmjew-1AePonQBuN1lAdUWrVIhglDqHIEKRqzGzY3NQ87rJp8BV_3Nb1qGBhu1mk9deZK0hpOmyRnDBTEUNA1C30eNGa"
         }
       ]
     },
     {
       "name": "Liverpool",
       "description": "Ropa y accesorios que nos encantaron para el pequeño.",
-      "url": "https://www.liverpool.com.mx/mesa-de-regalos/yourlist",
+      "url": "https://www.liverpool.com.mx/tienda?s=bebes",
       "image": "https://gcp-na-images.contentstack.com/v3/assets/blt339516d00dd80f86/blt07b6231a0224df6f/686da1846414b29800a13955/Liverpool_opengraph.png?branch=release1510",
       "suggestions": [
         {
           "label": "Conjuntos de ropa (0-3 meses)",
-          "image": "/images/registry/products/ropa.png"
+          "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTE2PkcF8Ig_LVFX0rrdjUzq8GuneWJbU6h7_TJG86mdc4XVDMoRMhNMKJyWF-duDmyGeJNoyZmH1weOr2gDqPghD69mWz8sEk2y8aMFhiTKaleHsP13_pC"
         },
         {
           "label": "Cobijas de algodón",
-          "image": "/images/registry/products/cobijas.png"
+          "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTKSOlJXpLxxJYF1vXkinG0_7UR8rXKOpYunH3AJ2eaQCR1vlBfaQ2celWenPDc7_L6XsCT2mjxkLt-SsOq76KFfleWjArHYQ_ovG8f8lLOHAV3bvP6LlM6"
         },
         {
           "label": "Toallas con capucha",
-          "image": "/images/registry/products/toallas.png"
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSvEh0OjXiUtpop7-_ZBNZ2hD1l42hJ5cKAkyf3LFGely6eAUHs62Mn07SV5871qLLbRHQRwADKvi_bTNOeT4omca12_Kx1I-c-Mj5QoaJjOXaxyGW3pOmf"
         }
       ]
     },
     {
-      "name": "BabyBoo",
+      "name": "Cualquier otro lugar (Referencias de Pinterest)",
       "description": "Productos artesanales y únicos que nos robaron el corazón.",
-      "url": "https://www.babyboo.mx/wishlist",
-      "image": "/images/registry/babyboo.webp",
+      "url": "https://es.pinterest.com/ville124/accesorios-para-bebes/",
+      "image": "https://cdn-useast1.kapwing.com/static/templates/pointing-mirror-guy-meme-template-full-c3588ce3.webp",
       "suggestions": [
         {
           "label": "Móvil de cuna tejido",
-          "image": "/images/registry/products/movil.png"
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR6_VCDsBAJY6-7HA8IR8zWxIyHWKp6hYphD_-rlkGBpSHCYVds2nKy-gEeyaM9jmx8K6W-4_PrOGnVUufmrd3Ecr6f8dgHL_dhDhzn0fimTqlZ7H0OOYTDXA"
         },
         {
           "label": "Almohada de lactancia",
-          "image": "/images/registry/products/almohada.png"
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTyVi2FeFQydpj-pI9NcIfNlJ-fkHwHeMvrw6-40MB-lsxMFGqZinh7YzZmjLT6Ml2wEHlr3HttVLCGll20glny0I5oL_4VZ8iR_yIGYMs9Tta-WMrhXvjRsg"
         },
         {
           "label": "Kit de cuidado natural",
-          "image": "/images/registry/products/kit.png"
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR6yFhMWTCap1JwippfJWIN4Sep-Rr7t9tDTyBfYwoOrK2jEq3tMGjDclNFR8wSNtPehPKAhPWh9BfRq9gVD-8j4ijx2zabToUJrzXCWnxHavrJL2yHjaGA"
         }
       ]
     }

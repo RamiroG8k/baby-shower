@@ -12,7 +12,9 @@ export class CalendarEvent {
         this.title = encodeURIComponent(
             `${event.parentName}'s ${event.eventType}`,
         );
-        this.location = encodeURIComponent(`${event.venue}, ${event.address}`);
+        this.location = encodeURIComponent(
+            `${event.venue}, ${event.address}\n${event.mapUrl}`,
+        );
         // Build description with invite URL
         const baseUrl = "https://baby-niko.g8k.dev";
         // const inviteUrl = `${baseUrl}/rsvp/${event.parentName.toLowerCase().replace(/\s+/g, "")}`;
@@ -45,7 +47,7 @@ export class CalendarEvent {
             `DTSTART:${this.startCal}`,
             `DTEND:${this.endCal}`,
             `SUMMARY:${this.event.parentName}'s ${this.event.eventType}`,
-            `LOCATION:${this.event.venue}, ${this.event.address}`,
+            `LOCATION:${this.event.venue}, ${this.event.address}\n${this.event.mapUrl}`,
             `DESCRIPTION:${this.event.tagline} Organizado por ${this.event.hostName}.\n\n${eventUrl}`,
             `URL:${eventUrl}`,
             ...this.getAlarms(),

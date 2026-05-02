@@ -1,0 +1,65 @@
+{
+  "intro": "Queremos que sepas que tu presencia es el mejor regalo. Si deseas obsequiarnos algo, aquí te dejamos algunas tiendas y productos que nos han encantado - pero siéntete libre de elegir lo que prefieras.",
+  "shops": [
+    {
+      "name": "Amazon",
+      "description": "Nuestra lista principal con artículos esenciales para el bebé.",
+      "url": "https://www.amazon.com.mx/baby-reg/yourlist",
+      "image": "https://blogs.unsw.edu.au/nowideas/files/2018/03/amazon.jpg",
+      "suggestions": [
+        {
+          "label": "Pañalera organizadora",
+          "image": "/images/registry/products/panalera.png"
+        },
+        {
+          "label": "Monitor de bebé",
+          "image": "/images/registry/products/monitor.png"
+        },
+        {
+          "label": "Set de biberones",
+          "image": "/images/registry/products/biberones.png"
+        }
+      ]
+    },
+    {
+      "name": "Liverpool",
+      "description": "Ropa y accesorios que nos encantaron para el pequeño.",
+      "url": "https://www.liverpool.com.mx/mesa-de-regalos/yourlist",
+      "image": "https://gcp-na-images.contentstack.com/v3/assets/blt339516d00dd80f86/blt07b6231a0224df6f/686da1846414b29800a13955/Liverpool_opengraph.png?branch=release1510",
+      "suggestions": [
+        {
+          "label": "Conjuntos de ropa (0-3 meses)",
+          "image": "/images/registry/products/ropa.png"
+        },
+        {
+          "label": "Cobijas de algodón",
+          "image": "/images/registry/products/cobijas.png"
+        },
+        {
+          "label": "Toallas con capucha",
+          "image": "/images/registry/products/toallas.png"
+        }
+      ]
+    },
+    {
+      "name": "BabyBoo",
+      "description": "Productos artesanales y únicos que nos robaron el corazón.",
+      "url": "https://www.babyboo.mx/wishlist",
+      "image": "/images/registry/babyboo.webp",
+      "suggestions": [
+        {
+          "label": "Móvil de cuna tejido",
+          "image": "/images/registry/products/movil.png"
+        },
+        {
+          "label": "Almohada de lactancia",
+          "image": "/images/registry/products/almohada.png"
+        },
+        {
+          "label": "Kit de cuidado natural",
+          "image": "/images/registry/products/kit.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 ---
 import "@styles/global.css";
+import { ClientRouter } from "astro:transitions";
 import event from "@data/event.json";
 import WatercolorBlob from "@components/svg/WatercolorBlob.astro";
 
@@ -30,6 +31,7 @@ const {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
         <title>{title}</title>
+        <ClientRouter />
     </head>
     <body>
         <WatercolorBlob variant="sage" size="350px" position="top-right" />

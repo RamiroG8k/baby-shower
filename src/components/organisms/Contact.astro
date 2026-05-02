@@ -2,6 +2,7 @@
 import { Event } from "@models/Event";
 import Text from "@atoms/Text.astro";
 import Headline from "@atoms/Headline.astro";
+import Separator from "../atoms/Separator.astro";
 
 const event = Event.getInstance();
 ---
@@ -17,7 +18,10 @@ const event = Event.getInstance();
         {event.data.closingMessage}
     </Headline>
 
-    <Text as="p" variant="body-md" class="contact__host">
+    <Separator visible={false} />
+    <Separator visible={false} />
+
+    <Text as="p" variant="body-md">
         Con cariño, <strong>{event.data.hostName}</strong>
     </Text>
 </section>

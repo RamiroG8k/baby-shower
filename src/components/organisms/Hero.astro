@@ -3,6 +3,7 @@ import event from "@data/event.json";
 import { Icon } from "astro-icon/components";
 import Text from "@components/atoms/Text.astro";
 import Headline from "@components/atoms/Headline.astro";
+import Separator from "../atoms/Separator.astro";
 ---
 
 <section class="hero" id="hero">
@@ -11,12 +12,13 @@ import Headline from "@components/atoms/Headline.astro";
             <Icon name="heart" class="hero__heart-icon" aria-hidden="true" />
         </div>
 
-        <Text style="animation: fadeUp 0.8s ease 0.3s both;">
+        <Text variant="label" style="animation: fadeUp 0.8s ease 0.3s both;">
             {"Acompáñanos a celebrar el".toUpperCase()}
         </Text>
 
         <Text
             bold
+            variant="label"
             style="letter-spacing: 0.2em; animation: fadeUp 0.8s ease 0.5s both;"
         >
             {event.eventType.toUpperCase()}
@@ -30,9 +32,11 @@ import Headline from "@components/atoms/Headline.astro";
             {event.parentName}
         </Headline>
 
+        <Separator visible={false} />
+
         <Text
             as="p"
-            variant="body-lg"
+            variant="label"
             italic
             weight="light"
             style="animation: fadeUp 0.8s ease 0.9s both;"

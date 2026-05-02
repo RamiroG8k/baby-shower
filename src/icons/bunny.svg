@@ -63,12 +63,4 @@
                 />
             </g>
         </g>
-    </g>
-    <style>
-        path { fill: #000; }
-        @media (prefers-color-scheme: dark) {
-            path { fill: #FFF; stroke: #FFF; }
-            ellipse { fill: #FFF; stroke: #FFF; }
-        }
-    </style>
 </svg>

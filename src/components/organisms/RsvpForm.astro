@@ -41,7 +41,11 @@ const whatsappAdviseUrl = `https://wa.me/${whatsappPhone}?text=${adviseText}`;
                     Asistiré con gusto
                 </Button>
 
-                <Link href={whatsappDeclineUrl} variant="outline">
+                <Link
+                    href={whatsappDeclineUrl}
+                    variant="outline"
+                    id="whatsapp-decline"
+                >
                     No podré asistir
                 </Link>
             </div>
@@ -69,6 +73,7 @@ const whatsappAdviseUrl = `https://wa.me/${whatsappPhone}?text=${adviseText}`;
                 href={whatsappAdviseUrl}
                 target="_blank"
                 class="rsvp__whatsapp-link"
+                id="whatsapp-confirm"
             >
                 <Icon name="whatsapp" width="20" height="20" />
                 Confirmar por WhatsApp
@@ -109,6 +114,32 @@ const whatsappAdviseUrl = `https://wa.me/${whatsappPhone}?text=${adviseText}`;
         accepted.style.display = "none";
         stepChoice.style.display = "block";
     });
+
+    const params = new URLSearchParams(window.location.search);
+    const phoneOverride = params.get("w");
+
+    if (phoneOverride && /^\d{10,15}$/.test(phoneOverride)) {
+        const declineText = encodeURIComponent(
+            "Hola, no podré asistir al baby shower. ¡Gracias por la invitación!",
+        );
+        const adviseText = encodeURIComponent(
+            "¡Hola! Tengo un mensaje para los papás...",
+        );
+
+        const declineLink = document.getElementById("whatsapp-decline");
+        const confirmLink = document.getElementById("whatsapp-confirm");
+
+        if (declineLink)
+            declineLink.setAttribute(
+                "href",
+                `https://wa.me/${phoneOverride}?text=${declineText}`,
+            );
+        if (confirmLink)
+            confirmLink.setAttribute(
+                "href",
+                `https://wa.me/${phoneOverride}?text=${adviseText}`,
+            );
+    }
 </script>
 
 <style>

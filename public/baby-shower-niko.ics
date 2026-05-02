@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Gemini AI//NONSGML Event Merge//EN
+BEGIN:VEVENT
+UID:9EA60903-C751-4F18-97BC-49C9ACBDA6B8
+DTSTAMP:20260502T184755Z
+SEQUENCE:1
+TRANSP:OPAQUE
+SUMMARY:Baby Shower - Nikolai Rafael
+DTSTART:20260620T153000
+DTEND:20260620T210000
+LOCATION:Corral de la Moreria, Priv. Pino Suarez 56, Zapopan, Jal. 45100\nhttps://maps.app.goo.gl/ascGdTDtsJxT5aSi8
+DESCRIPTION:¡Un pequeñito está en camino! Organizado por Sugeit & Ramiro.\n\nhttps://baby-niko.g8k.dev[cite: 1]
+URL:https://baby-niko.g8k.dev[cite: 1]
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder - 2 hours before event[cite: 1]
+TRIGGER:-PT2H[cite: 1]
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder - 1 day before event[cite: 1]
+TRIGGER:-P1D[cite: 1]
+END:VALARM
+END:VEVENT
+END:VCALENDAR

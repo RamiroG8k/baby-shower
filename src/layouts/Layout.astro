@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-    title = `${event.eventType} de ${event.parentName} — ${event.tagline}`,
-    description = `Acompáñanos a celebrar el ${event.eventType.toLowerCase()} de ${event.parentName}. ${event.dayOfWeek}, ${event.date} en ${event.venue}.`,
+    title = `${event.tagline}`,
+    description = `Acompáñanos a celebrar el ${event.eventType.toLowerCase()} de ${event.parentName}. El ${new Date(event.date).toLocaleDateString("es-MX", { dateStyle: "full" })}.`,
 } = Astro.props;
 ---
 

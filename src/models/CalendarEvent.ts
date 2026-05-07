@@ -10,7 +10,7 @@ export class CalendarEvent {
     constructor(private readonly event: EventData) {
         const dateStr = event.date.replace(/-/g, "");
         this.title = encodeURIComponent(
-            `${event.parentName}'s ${event.eventType}`,
+            `${event.eventType} de ${event.parentName}`,
         );
         this.location = encodeURIComponent(
             `${event.venue}, ${event.address}\n${event.mapUrl}`,
@@ -46,9 +46,9 @@ export class CalendarEvent {
             "BEGIN:VEVENT",
             `DTSTART:${this.startCal}`,
             `DTEND:${this.endCal}`,
-            `SUMMARY:${this.event.parentName}'s ${this.event.eventType}`,
-            `LOCATION:${this.event.venue}, ${this.event.address}\n${this.event.mapUrl}`,
-            `DESCRIPTION:${this.event.tagline} Organizado por ${this.event.hostName}.\n\n${eventUrl}`,
+            `SUMMARY:${this.event.eventType} de ${this.event.parentName}`,
+            `LOCATION:${this.event.venue}\\, ${this.event.address}\\n${this.event.mapUrl}`,
+            `DESCRIPTION:${this.event.tagline} Organizado por ${this.event.hostName}.\\n\\n${eventUrl}`,
             `URL:${eventUrl}`,
             ...this.getAlarms(),
             "END:VEVENT",
@@ -57,40 +57,16 @@ export class CalendarEvent {
     }
 
     private getAlarms(): string[] {
-        const dateStr = this.startCal.split("T")[0];
-        const startTime = this.startCal.split("T")[1];
-        const startHour = parseInt(startTime.substring(0, 2), 10);
-        const startMinute = parseInt(startTime.substring(2, 4), 10);
-
-        // Alarm 1: 2 hours before
-        let alarmHour = startHour - 2;
-        let alarmMinute = startMinute;
-        let alarmDate = dateStr;
-
-        if (alarmHour < 0) {
-            alarmHour += 24;
-            // Simple day decrement (assumes event is not on first day of month)
-            const day = parseInt(dateStr.substring(6, 8), 10);
-            alarmDate = `${dateStr.substring(0, 6)}${String(day - 1).padStart(2, "0")}`;
-        }
-
-        const alarmTime2h = `${String(alarmHour).padStart(2, "0")}${String(alarmMinute).padStart(2, "0")}00`;
-        const alarmDate2h = alarmDate;
-
-        // Alarm 2: 1 day before (same time)
-        const day = parseInt(dateStr.substring(6, 8), 10);
-        const alarmDate1d = `${dateStr.substring(0, 6)}${String(day - 1).padStart(2, "0")}`;
-
         return [
             "BEGIN:VALARM",
             "ACTION:DISPLAY",
-            "DESCRIPTION:Reminder - 2 hours before event",
-            `TRIGGER:-PT2H`,
+            "DESCRIPTION:Recordatorio",
+            "TRIGGER:-P1D",
             "END:VALARM",
             "BEGIN:VALARM",
             "ACTION:DISPLAY",
-            "DESCRIPTION:Reminder - 1 day before event",
-            `TRIGGER:-P1D`,
+            "DESCRIPTION:Recordatorio",
+            "TRIGGER:-PT2H",
             "END:VALARM",
         ];
     }

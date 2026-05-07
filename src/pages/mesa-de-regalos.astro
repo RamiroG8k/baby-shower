@@ -44,14 +44,14 @@ import registry from "@data/registry.json";
                         class={`shop-section animate-on-scroll delay-${i + 1}`}
                     >
                         <div class="shop-header">
-                            <div class="shop-image-wrapper">
+                            <Link href={shop.url} class="shop-image-wrapper">
                                 <img
                                     src={shop.image}
                                     alt={shop.name}
                                     class="shop-image"
                                     loading="lazy"
                                 />
-                            </div>
+                            </Link>
 
                             <div class="shop-info">
                                 <Headline as="h2" variant="md">
@@ -84,7 +84,7 @@ import registry from "@data/registry.json";
 
                         <div class="suggestions-scroll">
                             {shop.suggestions.map((item) => (
-                                <div class="suggestion-card">
+                                <Link href={shop.url} class="suggestion-card">
                                     <div class="suggestion-squircle">
                                         <Icon
                                             class="squircle-icon"
@@ -107,7 +107,7 @@ import registry from "@data/registry.json";
                                     >
                                         {item.label}
                                     </Text>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </section>

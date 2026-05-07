@@ -1,46 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap");
+@import "./colors.css";
 @import "./typography.css";
+@import "./pill.css";
 
 :root {
-    --surface: #fafaf3;
-    --surface-dim: #dadad4;
-    --surface-bright: #fafaf3;
-    --surface-container-lowest: #ffffff;
-    --surface-container-low: #f6f6f1;
-    --surface-container: #eeeee8;
-    --surface-container-high: #e8e9e2;
-    --surface-container-highest: #e2e3dd;
-    --on-surface: #1a1c19;
-    --on-surface-variant: #43483f;
-    --inverse-surface: #2f312d;
-    --inverse-on-surface: #f1f1eb;
-    --outline: #73796e;
-    --outline-variant: #c3c8bc;
-    --surface-tint: #45673d;
-    --primary: #45673d;
-    --on-primary: #ffffff;
-    --primary-container: #95bb89;
-    --on-primary-container: #2a4b24;
-    --inverse-primary: #aad19d;
-    --secondary: #53634e;
-    --on-secondary: #ffffff;
-    --secondary-container: #d7e8ce;
-    --on-secondary-container: #596954;
-    --tertiary: #70585f;
-    --on-tertiary: #ffffff;
-    --tertiary-container: #c6a9b1;
-    --on-tertiary-container: #533d44;
-    --error: #ba1a1a;
-    --on-error: #ffffff;
-    --error-container: #ffdad6;
-    --on-error-container: #93000a;
-    --primary-fixed: #c6eeb8;
-    --primary-fixed-dim: #aad19d;
-    --secondary-fixed: #d7e8ce;
-    --secondary-fixed-dim: #bbcbb3;
-    --tertiary-fixed: #fadbe3;
-    --tertiary-fixed-dim: #ddbfc7;
-
     --space-unit: 4px;
     --space-xs: calc(var(--space-unit) * 1);
     --space-sm: calc(var(--space-unit) * 2);
@@ -58,9 +21,9 @@
     --radius-xl: calc(var(--space-unit) * 12);
     --radius-full: 9999px;
 
-    --shadow-soft: 0 2px 16px rgba(26, 28, 25, 0.06);
-    --shadow-card: 0 4px 24px rgba(26, 28, 25, 0.08);
-    --shadow-elevated: 0 8px 40px rgba(26, 28, 25, 0.1);
+    --shadow-soft: 0 2px 16px rgba(var(--shadow-color), 0.06);
+    --shadow-card: 0 4px 24px rgba(var(--shadow-color), 0.08);
+    --shadow-elevated: 0 8px 40px rgba(var(--shadow-color), 0.1);
 }
 
 *,
@@ -217,100 +180,4 @@ textarea {
     .section {
         padding: var(--space-4xl) var(--space-lg);
     }
-}
-
-.pill-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-sm);
-    padding: var(--space-md) var(--space-xl);
-    border-radius: var(--radius-full);
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    transition: all 0.3s ease;
-    min-height: 48px;
-}
-
-.pill-button--primary {
-    background-color: var(--primary);
-    color: var(--on-primary);
-}
-
-.pill-button--primary:hover {
-    background-color: var(--on-primary-container);
-    box-shadow: var(--shadow-soft);
-    transform: translateY(-1px);
-}
-
-.pill-button--secondary {
-    background-color: var(--secondary-container);
-    color: var(--on-secondary-container);
-}
-
-.pill-button--secondary:hover {
-    background-color: var(--secondary-fixed-dim);
-    box-shadow: var(--shadow-soft);
-    transform: translateY(-1px);
-}
-
-.pill-button--tertiary {
-    background-color: var(--tertiary-fixed);
-    color: var(--on-tertiary-container);
-}
-
-.pill-button--tertiary:hover {
-    background-color: var(--tertiary-fixed-dim);
-    transform: translateY(-1px);
-}
-
-.pill-button--outline {
-    background-color: transparent;
-    color: var(--on-surface-variant);
-    border: 1.5px solid var(--outline-variant);
-}
-
-.pill-button--outline:hover {
-    background-color: var(--surface-container-low);
-    border-color: var(--outline);
-}
-
-.pill-input {
-    width: 100%;
-    padding: var(--space-md) var(--space-lg);
-    border: 1.5px solid var(--outline-variant);
-    border-radius: var(--radius-full);
-    background: var(--surface-container-lowest);
-    color: var(--on-surface);
-    font-size: 14px;
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-    min-height: 48px;
-}
-
-.pill-input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(69, 103, 61, 0.12);
-}
-
-.pill-input::placeholder {
-    color: var(--outline);
-}
-
-textarea.pill-input {
-    border-radius: var(--radius-md);
-    resize: vertical;
-    min-height: 80px;
-}
-
-.section-divider {
-    width: 60px;
-    height: 1.5px;
-    background: var(--outline-variant);
-    margin: 0 auto;
-    border-radius: var(--radius-full);
 }

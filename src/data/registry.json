@@ -1,35 +1,35 @@
 {
-  "intro": "Queremos que sepas que tu presencia es el mejor regalo. Si deseas obsequiarnos algo, aquí te dejamos algunas tiendas y productos que nos han encantado - pero siéntete libre de elegir lo que prefieras.",
-  "advice": "Si decides darnos un obsequio, nos gustaria recibirlo en el evento para hacerlo parte de las dinamicas",
+  "intro": "Si deseas obsequiarnos algo, aquí te dejamos algunas tiendas y productos que nos han gustado - pero siéntete libre de elegir lo que prefieras.",
+  "advice": "Si decides darnos un obsequio, nos gustaría recibirlo en el evento para hacerlo parte de las dinámicas",
   "shops": [
     {
       "name": "Amazon",
       "description": "Nuestra lista principal con artículos esenciales para el bebé.",
-      "url": "https://www.amazon.com.mx/s/ref=nb_sb_noss_2?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Dbaby&field-keywords=&crid=2VXE2NM1UP8ZN&sprefix=%2Cbaby%2C222",
+      "url": "https://www.amazon.com.mx/baby-reg/sugeit-andrade-junio-2026-guadalajara/38CL6LWC8RE8A",
       "image": "https://blogs.unsw.edu.au/nowideas/files/2018/03/amazon.jpg",
       "suggestions": [
         {
-          "label": "Mini gym",
-          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRHzAwKXAYB5Jfurs3vVINGaVtuPPomCXmyipKfI3YYGQdwpVw7oQG98TSSCtCdx93ggxehWB13J4amWVLd8YsdU059XNOy1NMRdGgDaJvBhlQsWHo4b6Xo8A"
+          "label": "Esterilizador",
+          "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQPx4fhCJNvTefF2D4OpRxrwiofh7v6rz26kJDq6sg374SEvBHZVLzufb6mKykXjhnvXWpw3rr3lpgnkAatBdLKSpZ57PLiHOXicFbStmrvjlI3eNXK24Ck2g"
         },
         {
-          "label": "Bicicleta",
-          "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ0V48GxnT1AUGuMzM8xGKXY8adDwPpVWOaOzuJbvBIq2LP8RonSapbukkfVnVB3MQSKgoUVPePopSBe6xcYuQlqCw1Mf-LaKJX35LHOv9D08d8BRkGUiVH3g"
+          "label": "Manta de felpa",
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRLXfjLbAxPjc11-oP9fw8haQumBtozffbf9kaF2x_iICeWDzUGRAXGrIOINhzSlOM2QL-eJOIwGpDE5liqvEmFghDGFQDDKrEhPIyA_KYDrQH2jWkIApIWPg"
         },
         {
-          "label": "Set de biberones",
-          "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR380ra9LW5vAH2iSyAJKhBp1AXtmjew-1AePonQBuN1lAdUWrVIhglDqHIEKRqzGzY3NQ87rJp8BV_3Nb1qGBhu1mk9deZK0hpOmyRnDBTEUNA1C30eNGa"
+          "label": "Cubierta de lactancia",
+          "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ2PtIQTUfFt8YWCAyxBSXgt0MglzT8LlCmNoV8_OOJFqZAIAIbykUtchvAq_4TQhS83tjq6vZPGgeL2eYMM3b0aPm1lyiMZb59uGyLYtWE4sJ8NCWMKrbk"
         }
       ]
     },
     {
       "name": "Liverpool",
-      "description": "Ropa y accesorios que nos encantaron para el pequeño.",
+      "description": "Ropa y accesorios que nos gustaron para el pequeño.",
       "url": "https://www.liverpool.com.mx/tienda?s=bebes",
       "image": "https://gcp-na-images.contentstack.com/v3/assets/blt339516d00dd80f86/blt07b6231a0224df6f/686da1846414b29800a13955/Liverpool_opengraph.png?branch=release1510",
       "suggestions": [
         {
-          "label": "Conjuntos de ropa (0-3 meses)",
+          "label": "Conjuntos de ropa",
           "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTE2PkcF8Ig_LVFX0rrdjUzq8GuneWJbU6h7_TJG86mdc4XVDMoRMhNMKJyWF-duDmyGeJNoyZmH1weOr2gDqPghD69mWz8sEk2y8aMFhiTKaleHsP13_pC"
         },
         {
@@ -44,8 +44,8 @@
     },
     {
       "name": "Cualquier otro lugar (Referencias de Pinterest)",
-      "description": "Productos artesanales y únicos que nos robaron el corazón.",
-      "url": "https://es.pinterest.com/ville124/accesorios-para-bebes/",
+      "description": "Este es un conjunto de referencias de Pinterest.",
+      "url": "https://pin.it/6cqh9s3Tf",
       "image": "https://cdn-useast1.kapwing.com/static/templates/pointing-mirror-guy-meme-template-full-c3588ce3.webp",
       "suggestions": [
         {

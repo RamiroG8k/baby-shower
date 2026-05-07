@@ -1,0 +1,87 @@
+.pill-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+    min-height: 48px;
+}
+
+.pill-button--primary {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+.pill-button--primary:hover {
+    background-color: var(--on-primary-container);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-1px);
+}
+
+.pill-button--secondary {
+    background-color: var(--secondary-container);
+    color: var(--on-secondary-container);
+}
+
+.pill-button--secondary:hover {
+    background-color: var(--secondary-fixed-dim);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-1px);
+}
+
+.pill-button--tertiary {
+    background-color: var(--tertiary-fixed);
+    color: var(--on-tertiary-container);
+}
+
+.pill-button--tertiary:hover {
+    background-color: var(--tertiary-fixed-dim);
+    transform: translateY(-1px);
+}
+
+.pill-button--outline {
+    background-color: transparent;
+    color: var(--on-surface-variant);
+    border: 1.5px solid var(--outline-variant);
+}
+
+.pill-button--outline:hover {
+    background-color: var(--surface-container-low);
+    border-color: var(--outline);
+}
+
+.pill-input {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    border: 1.5px solid var(--outline-variant);
+    border-radius: var(--radius-full);
+    background: var(--surface-container-lowest);
+    color: var(--on-surface);
+    font-size: 14px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    min-height: 48px;
+}
+
+.pill-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(69, 103, 61, 0.12);
+}
+
+.pill-input::placeholder {
+    color: var(--outline);
+}
+
+textarea.pill-input {
+    border-radius: var(--radius-md);
+    resize: vertical;
+    min-height: 80px;
+}
